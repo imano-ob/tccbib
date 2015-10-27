@@ -1,0 +1,15 @@
+%% ------------------------------------------------------------------------- %%
+\chapter{Introdução}
+\label{cap:introducao}
+
+%TODO: Arrumar abaixo
+Neste trabalho serão exploradas possíveis aplicações da prática de Autotuning sobre jogos digitais. Primeiramente, é necessário explicar a ideia de Autotuning, ou Ajuste Fino.
+%TODO: Arrumar acima
+O Ajuste Fino parte da proposta de automatizar o processo de otimização de um programa, alterando seus parâmetros ou algoritmos de solução. Um sistema que realiza essa ação é comumente chamado de tuner, e ele pode funcionar de várias maneiras; o que ele faz, no entanto, é testar diversas configurações diferentes de parâmetros ou algoritmos, e escolher quais destas obtêm o melhor desempenho esperado para o programa, seja este um melhor resultado ou um menor tempo de execução. Um exemplo seria a escolha de flags de compilação que gera um programa com o menor tempo de execução sem introduzir erros. \cite{ansel2014opentuner}
+
+Os possíveis usos e aplicações de um tuner no campo de jogos digitais são diversos, desde a criação de ferramentas externas para os jogadores que querem por exemplo, conseguir o máximo de seus pontos em um jogo, até possíveis implementações de meta-ferramentas de análise do jogo a nível de desenvolvimento. Um programador, desenvolvendo seu jogo, poderia chegar ao impasse de precisar otimizar uma seção de seu código, por exemplo. Utilizando um tuner, e desenvolvendo seu código de maneira que se saiba que isso será feito, é possível realizar esta otimização de maneira muito mais rápida e efetiva do que se obteria manualmente, em alguns casos. [Citation Needed]
+
+Para este trabalho, foi utilizado o OpenTuner, que é um arcabouço de ajuste fino focado em realizar otimização de parâmetros, analisando os resultados gerados pelo programa a ser ajustado e criando um espaço de busca com estes. O OpenTuner então usa diversos algoritmos para expandir e navegar por este espaço de buscas, e eventualmente encontrar a combinação de parâmetros que gera o resultado desejado, ou se aproxima da melhor maneira deste resultado.
+
+Um aspecto explorado neste trabalho é a otimização de parâmetros de comportamento de inteligências artificiais dentro de um jogo, procurando descobrir quais parâmetros melhor afetam o comportamento das mesmas. Para isso, foram realizados testes usando o jogo OpenTTD e um tuner que otimiza parâmetros de inteligências artificiais rodando em um servidor. Este jogo consiste de um simulador de uma empresa de gerência de transportes, e é o papel do jogador construir e expandir uma rede de serviços de transporte da maneira mais lucrativa possível. Os testes mais comuns para as IAs(Inteligências Artificiais) foram analisar quais parâmetros afetam o ganho de caixa em um determinado período de tempo.
+
