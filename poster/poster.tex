@@ -33,9 +33,9 @@
 
 \listfiles
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{\huge yay}
+\title{\huge Aplicando o Arcabouço OpenTuner em Jogos Digitais}
 
-\author{eu<eu@eu.eu>, Orientador: ele<ele@ele.ele>}
+\author{Renan Teruo Carneiro, Vitor Cerqueira Santos <renantc@linux.ime.usp.br varyag@linux.ime.usp.br>, Orientador: Alfredo Goldman <gold@ime.usp.br>}
 \institute[Universidade de São Paulo] % (optional, but mostly needed)
 {
   Instituto de Matemática e Estatística, Universidade de São Paulo - Trabalho
@@ -64,15 +64,23 @@
             
             \begin{block}{Introdução}
             \justifying
-                Something something autotuning. Something something something.
+                Neste trabalho são exploradas possíveis aplicações do conceito de Autotuning, ou Ajuste Fino sobre jogos digitais. 
+                                
+                \vspace*{0.15cm}
+                
+                O autotuning parte da proposta de automatizar o processo de otimização de um programa, alterando seus parâmetros ou algoritmos de solução. Um sistema que realiza essa ação é comumente chamado de tuner, e ele pode funcionar de várias maneiras; o que ele faz, no entanto, é testar diversas configurações diferentes de parâmetros ou algoritmos, e escolher quais destas obtêm o melhor desempenho esperado para o programa, seja este um resultado mais favorável, ou um menor tempo de execução.
                 
                 \vspace*{0.15cm}
                 
-                Something something OpenTuner. Something something.
+                Os possíveis usos e aplicações de um tuner no campo de jogos digitais são diversos, desde a criação de ferramentas externas para os jogadores que querem por exemplo, conseguir o máximo de seus pontos em um jogo, até possíveis implementações de meta-ferramentas de análise do jogo a nível de desenvolvimento.
                 
                 \vspace*{0.15cm}
-
-                Something something OpenTTD. Something Something
+                
+                Para este trabalho, foi utilizado o OpenTuner, que é um arcabouço de ajuste fino focado em realizar otimização de parâmetros, analisando os resultados gerados pelo programa a ser ajustado e criando um espaço de busca com estes. Junto a esta ferramenta, foi escolhido como base para os testes, o jogo OpenTTD.
+                
+                \vspace*{0.15cm}
+                
+                O OpenTTD é um simulador de gerência de uma empresa de transportes, onde se é possível construir e controlar rotas de entrega, linhas de trem, entre outros meios de transporte. O jogo pode rodar inteligências artificiais que controlam outras empresas, e o autotuning foi feito sobre estas.
 
 %                \textbf{AAAAAAAAAAAAAAAAAAA}
                 
@@ -84,11 +92,15 @@
             \begin{block}{Objetivos}
               \justifying
               \begin{itemize}
-                \item Something something viabilidade 
+                \item Verificar a viabilidade de aplicação de técnicas de autotuning sobre jogos digitais 
                 
                 \vspace*{0.4cm}
                 
                 \item Implementar pelo menos 1 prova de conceito.
+                
+                \vspace*{0.4cm}
+                
+                \item Verificar o quanto um tuner pode afetar o desempenho de um aspecto do jogo 
               \end{itemize}
               \vspace*{0.2cm} 
             \end{block}
