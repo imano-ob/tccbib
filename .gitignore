@@ -1,0 +1,11 @@
+template/
+*.log
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.gz
+*.pdf
+*.toc
+*.out
