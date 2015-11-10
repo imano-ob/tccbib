@@ -106,26 +106,19 @@
             \end{block}
             
             \vspace*{0.2cm}
-            
-            \begin{block}{Exemplo de Tuning}
-                \center 
-%                \begin{figure}[h]
-%                  \fbox{\includegraphics[width=0.45\textwidth]{p2p-network.png}}
-%                  \fbox{\includegraphics[width=0.45\textwidth]{server-based-network.png}}
-%                  \caption{Comparação de rede Peer-to-peer (Esquerda) com Cliente-Servidor (Direita). 
-%                    Fonte: Baseado em figura de Wikimedia Commons}
-%                \end{figure}
-                                
-                \vspace*{0.2cm}
-            \end{block}
-            
-            \vspace*{0.2cm}
 
             \begin{block}{O OpenTuner}
             \justifying
                 OpenTuner é um arcabouço para a implementação de sistemas de otimização e autotuning de programas. Utilizando um conjunto de técnicas empíricas de busca, o OpenTuner gera e testa combinações de parâmetros de configuração para um determinado programa, que podem representar por exemplo, escolhas algorítmicas. 
                 
+                \vspace*{0.2cm}
+                
+                O OpenTuner realiza a ação de otimização via um conjunto de métodos. O módulo de medição aceita resultados desejados na sua entrada, e executa o programa tentando chegar neles. Ao final da execução, os resultados observados são devolvidos para o módulo de otimização, que cria o espaço de busca do problema com estes resultados, e o navega criando novas parametrizações de resultados desejados, que são enviados novamente ao módulo de medição.
+                
                 \vspace*{0.4cm} 
+                
+                %inserir figura explicando o OpenTuner aqui!
+                
                 
 %                \begin{figure}[h]
 %                  \fbox{\includegraphics[width=0.4\textwidth]{passive_ftp_connection.png}}
@@ -138,6 +131,20 @@
                 A decisão foi feita para aplicar o OpenTuner em algum projeto já existente, neste caso um jogo. A ideia básica é que podemos usar o OpenTuner para otimizar um conjunto de parâmetros dentro do jogo, para ajudar o jogador a ter um planejamento, ou como uma metaferramenta de auxílio.
                                
                 \vspace*{0.2cm} 
+            \end{block}
+                        
+            \vspace*{0.2cm}
+            
+            \begin{block}{Exemplo de Tuning}
+            	\center 
+            	%                \begin{figure}[h]
+            	%                  \fbox{\includegraphics[width=0.45\textwidth]{p2p-network.png}}
+            	%                  \fbox{\includegraphics[width=0.45\textwidth]{server-based-network.png}}
+            	%                  \caption{Comparação de rede Peer-to-peer (Esquerda) com Cliente-Servidor (Direita). 
+            	%                    Fonte: Baseado em figura de Wikimedia Commons}
+            	%                \end{figure}
+            	
+            	\vspace*{0.2cm}
             \end{block}
           }
         \end{minipage}
@@ -175,14 +182,7 @@
                          
                 \vspace*{0,5cm}
                 
-                O Tuner
-                Composto de três partes:
-                \begin{itemize}
-                	\item O construtor gera os arquivos a serem alterados para os testes e os passa para o tuner
-                	\item O handler organiza e trata a saída do programa, comunicando-se com o tuner
-                	\item O tuner então executa os testes em um servidor de jogo, carregando os arquivos de IA modificados, e colhendo seus resultados
-                	\item Baseado nestes resultados, os novos parâmetros são gerados, e as informações necessárias para preparar os novos arquivos de teste são passadas para o construtor
-                \end{itemize}
+                A execução dos testes consiste em iniciar um servidor do jogo, inicializar uma IA
                 
                 \vspace*{0.2cm} 
             \end{block}
@@ -191,9 +191,17 @@
             
             \begin{block}{Resultados}
               \justifying 
-                Como prova de conceito, foi implementado um programa de conversação que utiliza a rede para enviar e receber
-                mensagens de outros nós. As mensagens são enviadas para todos e sem nome, com o único identificador sendo o IP
-                de origem.
+                O Tuner
+                
+                \vspace*{0.2cm} 
+                
+                Composto de três partes:
+                \begin{itemize}
+                	\item O construtor gera os arquivos a serem alterados para os testes e os passa para o tuner
+                	\item O handler organiza e trata a saída do programa, comunicando-se com o tuner
+                	\item O tuner então executa os testes em um servidor de jogo, carregando os arquivos de IA modificados, e colhendo seus resultados
+                	\item Baseado nestes resultados, os novos parâmetros são gerados, e as informações necessárias para preparar os novos arquivos de teste são passadas para o construtor
+                \end{itemize}
                 
 %                \begin{figure}[htp]
 %                  \centering
