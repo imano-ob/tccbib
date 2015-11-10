@@ -96,7 +96,7 @@
                 
                 \vspace*{0.4cm}
                 
-                \item Implementar pelo menos 1 prova de conceito.
+                \item Implementar um tuner aplicado a um jogo.
                 
                 \vspace*{0.4cm}
                 
@@ -161,26 +161,27 @@
             \begin{block}{OpenTTD}
                 O Jogo
                 \begin{itemize}
-                  \item Não depende de um servidor centralizado.
-                  \item Pode ser utilizada por mais de um jogo simultaneamente.
-                  \item Capaz de buscar por membros de um jogo específico.
+                  \item Simulador de gerência de uma empresa de transportes.
+                  \item Pode-se comprar, vender e construir veículos e linhas de transporte, como trens.
+                  \item Possui modo para vários jogadores, e suporta inteligências artificiais.
                 \end{itemize}
                 
                 \vspace*{0.5cm}
-                Para que os nós consigam conversar entre si, foi necessário definir um protocolo. 
-                Nele, foram existem as seguintes mensagems:
+                Para fazer os testes do tuner, foi buscada uma maneira de rodar e avaliar o desempenho de inteligências artificiais no ambiente do jogo.
                 \begin{itemize}
-                  \item ANNOUNCE\_SELF -- Anuncia a própria existência para o receptor.
-                  \item REQUEST\_NODE\_LIST -- Requisita do receptor uma lista de nós da rede.
-                  \item KEEP\_ALIVE -- Avisa que vai enviar mais mensagens nessa mesma conexão.
-                  \item SERVICE -- Comando para ser tratado usando alguma extensão definida por terceiros.
-                \end{itemize}
+                  \item Foi escolhida uma IA chamada ChooChoo, especializada no gerenciamento e construção de linhas de trem.
+                  \item Foi decidido que o tuner tentaria otimizar os parâmetros da função de pathfinding da AI, como uma maneira de avaliar o impacto de tais mudanças.
+                \end{itemize}  
+                         
+                \vspace*{0,5cm}
                 
-                \vspace*{0.2cm}
-                
-                E a seguinte resposta possível:
+                O Tuner
+                Composto de três partes:
                 \begin{itemize}
-                  \item NODE\_INFO -- Informações sobre um nó da rede.
+                	\item O construtor gera os arquivos a serem alterados para os testes e os passa para o tuner
+                	\item O handler organiza e trata a saída do programa, comunicando-se com o tuner
+                	\item O tuner então executa os testes em um servidor de jogo, carregando os arquivos de IA modificados, e colhendo seus resultados
+                	\item Baseado nestes resultados, os novos parâmetros são gerados, e as informações necessárias para preparar os novos arquivos de teste são passadas para o construtor
                 \end{itemize}
                 
                 \vspace*{0.2cm} 
@@ -188,7 +189,7 @@
 
             \vspace*{0.2cm} 
             
-            \begin{block}{Resultados: Chat}
+            \begin{block}{Resultados}
               \justifying 
                 Como prova de conceito, foi implementado um programa de conversação que utiliza a rede para enviar e receber
                 mensagens de outros nós. As mensagens são enviadas para todos e sem nome, com o único identificador sendo o IP
