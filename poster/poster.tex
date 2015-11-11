@@ -133,18 +133,6 @@
             \end{block}
                         
             \vspace*{0.2cm}
-            
-            \begin{block}{Exemplo de Tuning}
-            	\center 
-            	%                \begin{figure}[h]
-            	%                  \fbox{\includegraphics[width=0.45\textwidth]{p2p-network.png}}
-            	%                  \fbox{\includegraphics[width=0.45\textwidth]{server-based-network.png}}
-            	%                  \caption{Comparação de rede Peer-to-peer (Esquerda) com Cliente-Servidor (Direita). 
-            	%                    Fonte: Baseado em figura de Wikimedia Commons}
-            	%                \end{figure}
-            	
-            	\vspace*{0.2cm}
-            \end{block}
           }
         \end{minipage}
       \end{beamercolorbox}
@@ -202,25 +190,20 @@
                 	\item Baseado nestes resultados, os novos parâmetros são gerados, e as informações necessárias para preparar os novos arquivos de teste são passadas para o construtor
                 \end{itemize}
                 
-%                \begin{figure}[htp]
-%                  \centering
-%                   \fbox{\includegraphics[width=0.7\textwidth]{chat.png}}
-%                  \caption{Chat em funcionamento}
-%                \end{figure}
-%                \begin{figure}[htp]
-%                  \centering
-%                   \fbox{\includegraphics[width=0.95\textwidth]{chat-log.png}}
-%                  \caption{Log das mensagens enviadas e recebidas durante a descoberta de nós}
-%                \end{figure}
+                \begin{figure}[htp]
+                  \centering
+                   \fbox{\includegraphics[width=0.6\textwidth]{value-50yrs-best.png}}
+                  \caption{Teste com duração de 50 anos dentro do jogo}
+                \end{figure}
                 
                 \vspace*{0.4cm}
                 
                 Resultados obtidos com esse exemplo incluem:
                 \begin{itemize}
-                  \item Funciona! É possível conseguir encontrar a rede inteira através de alguns nós.
-                  \item Problemas com NAT. Sem adotar pelo menos UPnP, torna-se impraticável o uso para encontrar nós atravéz da Internet.
-                  \item É necessário ter boas escolhas em quando iniciar novas buscas por nós, assim como por quanto tempo executar a busca.
-                  \item Nós não avisam quando eles ficam offline, então algum critério para decidir se um nó deixou de existir é importante.
+                  \item Funciona! O tuner consegue aumentar gradativamente o valor da empresa em testes subsequentes.
+                  \item Mesmo otimizando um conjunto de parâmetros aparentemente não relacionado, os custos do algoritmo de pathfinding de construção de ferrovias.
+                  \item Outros valores também foram avaliados, como o lucro final e o valor de caixa ao final do semestre, e também foram observadas melhoras.
+                  \item Ainda não é possível realizar testes em paralelo com o OpenTuner, o que causa uma geração mais lenta de resultados, e um crescimento mais lento do espaço de busca do algoritmo.
                 \end{itemize}
                 
                 \vspace*{0.2cm}
@@ -228,13 +211,12 @@
             
             \vspace*{0.2cm} 
             \begin{block}{Trabalhos Futuros}
-                Durante o desenvolvimento do protocolo e principalmente da prova de conceito, vários pontos se mostraram fundamentais e que serão estudados no futuro.
+                Durante o desenvolvimento do tuner, alguns
                 
                 \begin{itemize}
                   \item Política de quantos outros nós buscar.
                   \item Política de quando que um nó é considerado morto e deve ser ignorado.
-                  \item Diminuir a complexidade de para quais nós devo perguntar para algo melhor que O(n).
-                  \item Desenvolvimento de uma biblioteca em C++ para facilitar a integração com outros projetos.
+                 
                 \end{itemize}
                 
                 \vspace*{0.2cm} 
