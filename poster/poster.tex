@@ -65,23 +65,23 @@
             
             \begin{block}{Introdução}
             \justifying
-                Neste trabalho são exploradas possíveis aplicações do conceito de Ajuste Fino, ou \textit{autotuning} sobre jogos digitais. 
+                Neste trabalho são exploradas possíveis aplicações do conceito de Ajuste Fino, ou \textit{autotuning} em jogos digitais. 
                                 
                 \vspace*{0.15cm}
                 
-                O \textit{autotuning} consiste em automatizar o processo de otimização de um programa, alterando seus parâmetros ou algoritmos de solução. Um sistema que realiza essa ação é comumente chamado de textit{autotuner}, e pode funcionar de várias maneiras. Ao testar diversas configurações diferentes de parâmetros ou algoritmos, um autotuner escolhe as que obtêm o melhor desempenho para o programa. O desempenho pode ser medido pelo tempo de execução, ou pela maximização da saída do programa, por exemplo.
+                O processo do \textit{autotuning} consiste em automatizar a otimização de um programa alterando seus parâmetros ou algoritmos. Um sistema que realiza essa ação é comumente chamado de \textit{autotuner}, e pode funcionar de várias maneiras. Ao testar diversas configurações diferentes de parâmetros ou algoritmos, um autotuner escolhe as que obtêm o melhor desempenho para o programa. O desempenho pode ser medido pelo tempo de execução, ou pela maximização da saída do programa, por exemplo.
                 
                 \vspace*{0.15cm}
                 
-                Os possíveis usos e aplicações de um \textit{autotuner} no campo de jogos digitais são diversos, desde a criação de ferramentas externas para jogadores que desejam conseguir o máximo de seus pontos em um jogo, até possíveis implementações de meta-ferramentas de análise e desenvolvimento do jogo.
+                Os possíveis usos e aplicações de um \textit{autotuner} no campo de jogos digitais são diversos, desde a criação de ferramentas externas para jogadores que desejam conseguir o máximo de seus pontos em um jogo, até possíveis implementações de meta-ferramentas de análise e desenvolvimento de jogos.
                 
                 \vspace*{0.15cm}
                 
-                Neste trabalho foi utilizado o OpenTuner, um arcabouço de ajuste fino para otimização de parâmetros. Analisando os resultados gerados, o textit{autotuner} explora o espaço de busca, encontrando otimizações para o programa.
+                Neste trabalho foi utilizado o OpenTuner, um arcabouço de ajuste fino para otimização de parâmetros. Analisando os resultados gerados, o \textit{autotuner} explora o espaço de busca, encontrando otimizações para o programa.
                 
                 \vspace*{0.15cm}
                 
-                O OpenTTD é um simulador de gerência de uma empresa de transportes, onde se é possível construir e controlar rotas de entrega, linhas de trem, entre outros meios de transporte. O jogo utiliza inteligências artificiais que controlam empresas. Neste trabalho, implementamos um \textit{autotuner} para as IAs do OpenTTD, e analisamos o desempenho das IAs em relação aos objetivos do jogo.
+                O OpenTTD é um simulador de gerência de uma empresa de transportes, onde é possível construir e controlar rotas de entrega, linhas de trem e outros meios de transporte. O jogo utiliza Inteligências Artificiais que controlam empresas. Neste trabalho, implementamos um \textit{autotuner} para as IAs do OpenTTD, e analisamos o desempenho das IAs em relação aos objetivos do jogo.
 
 %                \textbf{AAAAAAAAAAAAAAAAAAA}
                 
@@ -121,11 +121,11 @@
                 
                 \vspace*{0.2cm} 
                 
-                 A ideia básica  de aplicar o OpenTuner em um jogo é que podemos usá-lo para otimizar um conjunto de parâmetros dentro do mesmo, para ajudar o jogador a ter um planejamento ou uma metaferramenta de auxílio.
+                 A ideia básica  de aplicar o OpenTuner a um jogo é que podemos usá-lo para otimizar um conjunto de parâmetros e ajudar o jogador a planejar ou desenvolver seu jogo.
                  
                  \vspace*{0.2cm} 
                  
-                 Foi desenvolvido então um \textit{autotuner} aplicado ao jogo OpenTTD, o qual otimiza os parâmetros do algoritmo de \textit{pathfinding} de uma IA, e então permitir a avaliação de seu impacto no ganho monetário da empresa. 
+                 Implementamos um \textit{autotuner} para as IAs do jogo OpenTTD, que otimiza os parâmetros do algoritmo de \textit{pathfinding} de uma IA. As IAs produzidas pelo \textit{autotuner} foram avaliadas segundo o valor da empresa produzida e ganho monetário.
                                
                 \vspace*{0.2cm} 
             \end{block}
@@ -153,13 +153,13 @@
             \begin{block}{OpenTTD}
                 \textbf{O Jogo}
                 
-                  OpenTTD é um simulador de gerência de uma empresa de transportes, onde pode-se comprar, vender e construir veículos e linhas de transporte, como trens. O jogo possui modo para vários jogadores via rede com um servidor, e suporta inteligências artificiais.
+                  OpenTTD é um simulador de gerência de uma empresa de transportes, onde pode-se comprar, vender e construir veículos e linhas de transporte, como por exemplo trens. O jogo possui um modo para vários jogadores via rede com um servidor, e suporta Inteligências Artificiais.
                 
                 \vspace*{0.2cm}
-                Para fazer os testes do \textit{autotuner}, foi buscada uma maneira de rodar e avaliar o desempenho de inteligências artificiais no ambiente do jogo.
+                Os testes do \textit{autotuner} executaram e avaliaram o desempenho das IAs no ambiente do jogo.
                 \begin{itemize}
-                  \item Foi escolhida uma IA chamada ChooChoo, especializada no gerenciamento e construção de linhas de trem.
-                  \item Foi decidido que o \textit{autotuner} tentaria otimizar os parâmetros da função de \textit{pathfinding} da IA, como uma maneira de avaliar o impacto de tais mudanças.
+                  \item Utilizamos uma IA chamada ChooChoo, especializada no gerenciamento e construção de linhas de trem.
+                  \item O \textit{autotuner} tenta otimizar os parâmetros da função de \textit{pathfinding} da IA.
                 \end{itemize}  
                          
                 \vspace*{0,2cm}
@@ -167,7 +167,7 @@
                 \textbf{Experimentos}
                 
                 \vspace*{0.2cm}
-                A execução dos testes consiste em iniciar um servidor do jogo, inserir uma IA no ambiente do jogo usando os parâmetros dados pelo \textit{autotuner}, e então avaliar o ganho monetário da empresa representada pela IA. Alterando os valores dos custos no algoritmo de \textit{pathfinding}, o \textit{autotuner} navega o espaço de busca do problema buscando encontrar a configuração que maximiza o ganho monetário e o valor da empresa ao final de um período dentro do jogo.
+                A execução dos testes consiste em iniciar um servidor do jogo, inserir uma IA no ambiente do jogo usando os parâmetros dados pelo \textit{autotuner}, e então avaliar o ganho monetário da empresa representada pela IA. Alterando os valores dos custos no algoritmo de \textit{pathfinding}, o \textit{autotuner} navega o espaço de busca do problema procurando pela configuração que maximiza o ganho monetário e o valor da empresa ao final de um período dentro do jogo.
                 
                 \vspace*{0.5cm} 
             \end{block}
@@ -180,11 +180,11 @@
                 \begin{itemize}
                 	\item O construtor gera os arquivos a serem alterados para os testes e os passa para o \textit{autotuner}
                 	\item O handler organiza e trata a saída do programa, comunicando-se com o \textit{autotuner}
-                	\item O \textit{autotuner} então executa os testes em um servidor de jogo, carregando os arquivos de IA modificados, e colhendo seus resultados	
+                	\item O \textit{autotuner} executa os testes em um servidor de jogo, carregando os arquivos de IA modificados, e registrando seus resultados.
                 \end{itemize}
                 
                 \vspace*{0.2cm}
-                Baseado nestes resultados, os novos parâmetros são gerados, e as informações necessárias para preparar os novos arquivos de teste são passadas para o construtor.
+                Novos parâmetros são gerados baseando-se nos resultados encontrados até o momento, e as informações necessárias para preparar os novos arquivos de teste são passadas para o construtor.
 
                 \begin{figure}[htp]
                   \centering
@@ -192,13 +192,15 @@
                   \caption{Teste com duração de 50 anos dentro do jogo}
                 \end{figure}
                 
-                \vspace*{0.4cm}
+                \vspace*{0.2cm}
                 
                 Resultados obtidos com esse exemplo incluem:
                 \begin{itemize}
                   \item É possível notar uma melhora gradual nos resultados do valor da empresa, depois da realização dos testes.
-                  \item Há um impacto significativo no crescimento do valor da empresa, o que é surpreendente dado o escopo do alvo da otimização, os custos do algoritmo de \textit{pathfinding}.
+                  \item Há um impacto significativo no crescimento do valor da empresa, o que é surpreendente dado o escopo do alvo da otimização: os custos do algoritmo de \textit{pathfinding}.
                   \item Outros valores também foram avaliados, como o lucro final e o valor de caixa ao final do semestre, e também foram observadas significativas melhoras.
+                  
+                  \vspace*{0.2cm}
                   
                   \textbf{Dificuldades}
                   \item Testes em paralelo com o OpenTuner não foram implementados até o presente momento, o que causa uma geração mais lenta de resultados, e uma navegação mais lenta do espaço de busca do algoritmo.
