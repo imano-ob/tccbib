@@ -196,10 +196,12 @@
                 
                 Resultados obtidos com esse exemplo incluem:
                 \begin{itemize}
-                  \item O \textit{autotuner} consegue aumentar gradativamente o valor da empresa em testes subsequentes.
-                  \item Mesmo otimizando um conjunto de parâmetros aparentemente não relacionado, os custos do algoritmo de \textit{pathfinding} de construção de ferrovias.
-                  \item Outros valores também foram avaliados, como o lucro final e o valor de caixa ao final do semestre, e também foram observadas melhoras.
-                  \item Ainda não é possível realizar testes em paralelo com o OpenTuner, o que causa uma geração mais lenta de resultados, e um crescimento mais lento do espaço de busca do algoritmo.
+                  \item É possível notar uma melhora gradual nos resultados do valor da empresa, depois da realização dos testes.
+                  \item Há um impacto significativo no crescimento do valor da empresa, o que é surpreendente dado o escopo do alvo da otimização, os custos do algoritmo de \textit{pathfinding}.
+                  \item Outros valores também foram avaliados, como o lucro final e o valor de caixa ao final do semestre, e também foram observadas significativas melhoras.
+                  
+                  \textbf{Dificuldades}
+                  \item Testes em paralelo com o OpenTuner não foram implementados até o presente momento, o que causa uma geração mais lenta de resultados, e uma navegação mais lenta do espaço de busca do algoritmo.
                 \end{itemize}
                 
                 \vspace*{0.2cm}
