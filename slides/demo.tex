@@ -37,53 +37,61 @@
 	  \begin{itemize}[<+- | alert@+>]
 	  	\item Aplicação com várias configurações
 	  	\item Problema: Encontrar melhor conjunto de configurações
-	  	\item Achar isso na mão is sadness
+	  	\item Autotuning is hooray
+	  	\item OpenTuner is Hooray
 	  \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Ajuste Fino}
-	  Enter the Autotuning!
-	  \pause
-	  \begin{itemize}[<+- | alert@+>]
-	  	\item Automatiza esse processo:
-	  	\item   Chuta uma configuração
-	  	\item   Vê o resultado
-	  	\item   Chuta outra configuração baseado nisso
-	  \end{itemize} 
-  %TODO: Autotuning
-  
+\begin{frame}{OpenTuner}
+	Framework para Autotuning\pause\\
+	Buscas marotas\pause\\
+	Exploitation x Exploration\pause\\
+	Is no paralelismo for shame
 \end{frame}
+%
+%\begin{frame}[fragile]
+%  \frametitle{Ajuste Fino}
+%	  Enter the Autotuning!
+%	  \pause
+%	  \begin{itemize}[<+- | alert@+>]
+%	  	\item Automatiza esse processo:
+%	  	\item   Chuta uma configuração
+%	  	\item   Vê o resultado
+%	  	\item   Chuta outra configuração baseado nisso
+%	  \end{itemize} 
+%  %TODO: Autotuning
+%  
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%	\frametitle{Ajuste Fino}
+%	Imagem goes here? Suplanta slide anterior?
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%	\frametitle{Ajuste Fino}
+%	  \begin{itemize}[<+- | alert@+>]
+%	  	\item Geralmente feito do zero
+%	  	\item Pessoal tem que manjar não só o programa, mas também buscas
+%	  	\item Demora pra fazer
+%	  	\item \begin{verbatim}= (\end{verbatim}
+%	\end{itemize}
+%\end{frame}
 
-\begin{frame}[fragile]
-	\frametitle{Ajuste Fino}
-	Imagem goes here? Suplanta slide anterior?
-\end{frame}
-
-\begin{frame}[fragile]
-	\frametitle{Ajuste Fino}
-	  \begin{itemize}[<+- | alert@+>]
-	  	\item Geralmente feito do zero
-	  	\item Pessoal tem que manjar não só o programa, mas também buscas
-	  	\item Demora pra fazer
-	  	\item \begin{verbatim}= (\end{verbatim}
-	\end{itemize}
-\end{frame}
 
 
-
-\begin{frame}[fragile]
-  \frametitle{OpenTuner}
-      OpenTuner!
-      \pause
-	  \begin{itemize}[<+- | alert@+>]
-		\item Já tem técnicas prontas
-		\item Só precisa passar o que rodar e os parâmetros
-		\item Não está pronto
-		\item KEDE PARALELISMO AAAAAAAAAAAAAA \begin{verbatim} >=(\end{verbatim}
-		
-	  \end{itemize}  
-\end{frame}
+%\begin{frame}[fragile]
+%  \frametitle{OpenTuner}
+%      OpenTuner!
+%      \pause
+%	  \begin{itemize}[<+- | alert@+>]
+%		\item Já tem técnicas prontas
+%		\item Só precisa passar o que rodar e os parâmetros
+%		\item Não está pronto
+%		\item KEDE PARALELISMO AAAAAAAAAAAAAA \begin{verbatim} >=(\end{verbatim}
+%		
+%	  \end{itemize}  
+%\end{frame}
 
 \section{Ideias}
 
@@ -115,6 +123,23 @@
 \begin{frame}{Experimentos}
 	Ver o que acontece mexendo nos custos do pathfinder de uma IA.\pause\\
 	Para isso, escolhemos a ChooChoo, porque trens. Sem mais.
+\end{frame}
+
+\begin{frame}{Experimentos}
+	Esquemas altamente gambiarrísticos \pause\\
+	Builder <-> Tuner <-> Handler <-> OpenTTD <-> TRENS!!!!\pause\\
+	OpenTTD compilado pra 0-player gotta go fast\pause\\
+	6 ou 8 IAs por iteração, pegando média\pause\\
+	Demora \pause -> Servidores semiclandestinos\pause\\
+	Altos crashes
+\end{frame}
+
+\section{Resultados}
+
+\begin{frame}{Resultados}
+	Funciona! \pause Kinda\pause\\
+	OpenTuner conseguiu resultados sem saber como o programa funciona\pause \\
+	Custos de pathfinder tem resultados reais. Who knew.
 \end{frame}
 
 \end{document}
