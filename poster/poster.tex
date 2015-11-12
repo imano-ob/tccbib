@@ -104,11 +104,11 @@
 
             \begin{block}{OpenTuner}
             \justifying
-                OpenTuner é um arcabouço para a implementação de sistemas de otimização e autotuning de programas. Utilizando um conjunto de técnicas empíricas de busca, o OpenTuner gera e testa combinações de parâmetros de configuração para um determinado programa, que podem representar por exemplo, escolhas algorítmicas. 
+                OpenTuner é um arcabouço para a implementação de sistemas de otimização e autotuning de programas. Utilizando um conjunto de técnicas empíricas de busca, o OpenTuner gera e testa combinações de parâmetros de configuração para um determinado programa, que podem representar escolhas algorítmicas. 
                 
                 \vspace*{0.2cm}
                 
-                O OpenTuner realiza a ação de otimização via um conjunto de métodos. O módulo de medição aceita resultados desejados na sua entrada, e executa o programa tentando chegar neles. Ao final da execução, os resultados observados são devolvidos para o módulo de otimização, que cria o espaço de busca do problema com estes resultados, e o navega criando novas parametrizações de resultados desejados, que são enviados novamente ao módulo de medição.
+                O OpenTuner realiza a ação de otimização via um conjunto de métodos. O módulo de medição aceita resultados desejados na sua entrada, e executa o programa tentando chegar neles. Ao final da execução, os resultados observados são devolvidos para o módulo de otimização, que navega o espaço de busca do problema com estes resultados, e chega em novos resultados desejados criando novas parametrizações, que são enviadas novamente ao módulo de medição.
                 
                 \vspace*{0.4cm} 
                 
@@ -121,7 +121,11 @@
                 
                 \vspace*{0.2cm} 
                 
-                A decisão foi feita para aplicar o OpenTuner em algum projeto já existente, neste caso um jogo. A ideia básica é que podemos usar o OpenTuner para otimizar um conjunto de parâmetros dentro do jogo, para ajudar o jogador a ter um planejamento, ou como uma metaferramenta de auxílio.
+                 A ideia básica  de aplicar o OpenTuner em um jogo é que podemos usá-lo para otimizar um conjunto de parâmetros dentro do mesmo, para ajudar o jogador a ter um planejamento ou uma metaferramenta de auxílio.
+                 
+                 \vspace*{0.2cm} 
+                 
+                 Foi desenvolvido então um \textit{autotuner} aplicado ao jogo OpenTTD, o qual otimiza os parâmetros do algoritmo de \textit{pathfinding} de uma IA, e então permitir a avaliação de seu impacto no ganho monetário da empresa. 
                                
                 \vspace*{0.2cm} 
             \end{block}
@@ -147,14 +151,11 @@
             \vspace*{0.8cm}
             
             \begin{block}{OpenTTD}
-                O Jogo
-                \begin{itemize}
-                  \item Simulador de gerência de uma empresa de transportes.
-                  \item Pode-se comprar, vender e construir veículos e linhas de transporte, como trens.
-                  \item Possui modo para vários jogadores, e suporta inteligências artificiais.
-                \end{itemize}
+                \textbf{O Jogo}
                 
-                \vspace*{0.5cm}
+                  OpenTTD é um simulador de gerência de uma empresa de transportes, onde pode-se comprar, vender e construir veículos e linhas de transporte, como trens. O jogo possui modo para vários jogadores via rede com um servidor, e suporta inteligências artificiais.
+                
+                \vspace*{0.2cm}
                 Para fazer os testes do \textit{autotuner}, foi buscada uma maneira de rodar e avaliar o desempenho de inteligências artificiais no ambiente do jogo.
                 \begin{itemize}
                   \item Foi escolhida uma IA chamada ChooChoo, especializada no gerenciamento e construção de linhas de trem.
@@ -166,7 +167,7 @@
                 \textbf{Experimentos}
                 
                 \vspace*{0.2cm}
-                A execução dos testes consiste em iniciar um servidor do jogo, inicializar uma IA
+                A execução dos testes consiste em iniciar um servidor do jogo, inserir uma IA no ambiente do jogo usando os parâmetros dados pelo \textit{autotuner}, e então avaliar o ganho monetário da empresa representada pela IA. Alterando os valores dos custos no algoritmo de \textit{pathfinding}, o \textit{autotuner} navega o espaço de busca do problema buscando encontrar a configuração que maximiza o ganho monetário e o valor da empresa ao final de um período dentro do jogo.
                 
                 \vspace*{0.5cm} 
             \end{block}
@@ -182,7 +183,8 @@
                 	\item O \textit{autotuner} então executa os testes em um servidor de jogo, carregando os arquivos de IA modificados, e colhendo seus resultados	
                 \end{itemize}
                 
-                Baseado nestes resultados, os novos parâmetros são gerados, e as informações necessárias para preparar os novos arquivos de teste são passadas para o construtor
+                \vspace*{0.2cm}
+                Baseado nestes resultados, os novos parâmetros são gerados, e as informações necessárias para preparar os novos arquivos de teste são passadas para o construtor.
 
                 \begin{figure}[htp]
                   \centering
@@ -194,7 +196,7 @@
                 
                 Resultados obtidos com esse exemplo incluem:
                 \begin{itemize}
-                  \item Funciona! O \textit{autotuner} consegue aumentar gradativamente o valor da empresa em testes subsequentes.
+                  \item O \textit{autotuner} consegue aumentar gradativamente o valor da empresa em testes subsequentes.
                   \item Mesmo otimizando um conjunto de parâmetros aparentemente não relacionado, os custos do algoritmo de \textit{pathfinding} de construção de ferrovias.
                   \item Outros valores também foram avaliados, como o lucro final e o valor de caixa ao final do semestre, e também foram observadas melhoras.
                   \item Ainda não é possível realizar testes em paralelo com o OpenTuner, o que causa uma geração mais lenta de resultados, e um crescimento mais lento do espaço de busca do algoritmo.
