@@ -37,16 +37,16 @@
 	  \begin{itemize}[<+- | alert@+>]
 	  	\item Aplicação com várias configurações
 	  	\item Problema: Encontrar melhor conjunto de configurações
-	  	\item Autotuning is hooray
-	  	\item OpenTuner is Hooray
+	  	\item Autotuning é uma alternativa interessante
+	  	\item Dentre os arcabouços de autotuning, OpenTuner se destaca
 	  \end{itemize}
 \end{frame}
 
 \begin{frame}{OpenTuner}
 	Framework para Autotuning\pause\\
-	Buscas marotas\pause\\
+	Apresenta diversas técnicas de busca\pause\\
 	Exploitation x Exploration\pause\\
-	Is no paralelismo for shame
+	Infelizmente, ainda não oferece paralelismo na execução de testes
 \end{frame}
 %
 %\begin{frame}[fragile]
@@ -98,6 +98,7 @@
 \begin{frame}[fragile]
   \frametitle{Ideias}
 	  \begin{itemize}
+	  	\item Aplicações em jogos:
 	  	\item Geradores de Mapa
 	  	\item Inteligências Artificias
 	  	\item SaltyBet
@@ -107,22 +108,21 @@
 
 \begin{frame}{Ideias}
 	OpenTTD!
-	\pause
-	Explicação do OpenTTD!
 \end{frame}
 
 \begin{frame}{OpenTTD}	
 	\begin{itemize}	[<+- | alert@+>]
-		\item Open Source
-		\item IAs
-		\item Trens! Parte mais importante!
+		\item Simulador de empresa de transportes
+		\item Projeto Open Source
+		\item Possui suporte para IAs
+		\item Um dos aspectos mais detalhados do jogo é a malha de trens
 	\end{itemize}
 \end{frame}
 
 \section{Experimentos}
 \begin{frame}{Experimentos}
-	Ver o que acontece mexendo nos custos do pathfinder de uma IA.\pause\\
-	Para isso, escolhemos a ChooChoo, porque trens. Sem mais.
+	Verificar os resultados de alterar os custos do \textit{pathfinder} de uma IA.\pause\\
+	Para isso, escolhemos a IA ChooChoo, que é focada em trens.
 \end{frame}
 
 \begin{frame}{Experimentos}
@@ -136,24 +136,28 @@
 \end{frame}
 	
 \begin{frame}{Experimentos}
-	Esquemas altamente gambiarrísticos \pause\\
+	\begin{itemize}
+	\item Diversas adaptações feitas para o funcionamento do OpenTTD junto com o OpenTuner \pause\\
 %	Builder <-> Tuner <-> Handler <-> OpenTTD <-> TRENS!!!!\pause\\
-	OpenTTD compilado pra 0-player gotta go fast\pause\\
-	Pode medir valor da empresa, dinheiro em caixa ou lucro no último quartil\pause\\
-	Mede ao final de N anos, configurável\pause\\
-	6 ou 8 IAs por iteração, pegando média\pause\\
-	Demora \pause -> Servidores semiclandestinos\pause\\
-	Altos crashes
+	\item OpenTTD compilado para funcionar em uma velicidade muito maior que a normal\pause\\
+	\item Pode medir valor da empresa, dinheiro em caixa ou lucro no último quartil\pause\\
+	\item Mede ao final de N anos, configurável\pause\\
+	\item 6 ou 8 IAs por iteração, pegando média\pause\\
+	\item Demora para gerar resultados \pause -> Utilizando máquinas não-dedicadas\pause\\
+	\item Certa instabilidade
+	\end{itemize}
 \end{frame}
 
 \section{Resultados e Conclusões}
 
 \begin{frame}{Resultados e Conclusões}
-	Funciona! \pause Kinda\pause\\
-	OpenTuner conseguiu resultados sem saber como o programa funciona\pause \\
-	Custos de pathfinder tem resultados reais. Who knew.\pause\\
-	OpenTTD não foi feito pra ser automatizado, então usar o OpenTuner foi meio forçado\pause\\
-	Talvez seja mais útil se um jogo for desenvolvido desde o começo com isso em mente
+	\begin{itemize}
+	\item Funciona! \pause De certa forma\pause\\
+	\item OpenTuner conseguiu resultados sem saber intrinsecamente como o programa funciona\pause \\
+	\item Custos de pathfinder tem resultados significativos em um aspecto maior do jogo.\pause\\
+	\item OpenTTD não foi feito pra ser automatizado, então usar o OpenTuner necessitou algumas adaptações\pause\\
+	\item Talvez seja mais útil se um jogo for desenvolvido desde o começo com isso em mente
+	\end{itemize}
 \end{frame}
 
 \end{document}
