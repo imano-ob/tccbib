@@ -48,6 +48,15 @@
 	Exploitation x Exploration\pause\\
 	Infelizmente, ainda não oferece paralelismo na execução de testes
 \end{frame}
+
+\begin{frame}{OpenTuner}
+	\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{OpenTuner}
+	\caption{Estrutura do OpenTuner}
+	\label{fig:OpenTuner}
+	\end{figure}
+\end{frame}
 %
 %\begin{frame}[fragile]
 %  \frametitle{Ajuste Fino}
@@ -110,6 +119,15 @@
 	OpenTTD!
 \end{frame}
 
+\begin{frame}{OpenTTD}
+	\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{OpenTTD}
+	\caption{Tela inicial do OpenTTD}
+	\label{fig:OpenTTD}
+	\end{figure}
+\end{frame}
+
 \begin{frame}{OpenTTD}	
 	\begin{itemize}	[<+- | alert@+>]
 		\item Simulador de empresa de transportes
@@ -139,7 +157,7 @@
 	\begin{itemize}
 	\item Diversas adaptações feitas para o funcionamento do OpenTTD junto com o OpenTuner \pause\\
 %	Builder <-> Tuner <-> Handler <-> OpenTTD <-> TRENS!!!!\pause\\
-	\item OpenTTD compilado para funcionar em uma velicidade muito maior que a normal\pause\\
+	\item OpenTTD compilado para funcionar em uma velocidade muito maior que a normal\pause\\
 	\item Pode medir valor da empresa, dinheiro em caixa ou lucro no último quartil\pause\\
 	\item Mede ao final de N anos, configurável\pause\\
 	\item 6 ou 8 IAs por iteração, pegando média\pause\\
@@ -150,6 +168,26 @@
 
 \section{Resultados e Conclusões}
 
+\begin{frame}{Resultados e conclusões}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{value-50yrs}
+		\caption{Resultados dos testes para 50 anos}
+		\label{fig:value-50yrs}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}{Resultados e conclusões}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{value-50yrs-best}
+		\caption{Resultados dos testes para 50 anos}
+		\label{fig:value-50yrs-best}
+	\end{figure}
+	
+\end{frame}
+
 \begin{frame}{Resultados e Conclusões}
 	\begin{itemize}
 	\item Funciona! \pause De certa forma\pause\\
@@ -157,6 +195,17 @@
 	\item Custos de pathfinder tem resultados significativos em um aspecto maior do jogo.\pause\\
 	\item OpenTTD não foi feito pra ser automatizado, então usar o OpenTuner necessitou algumas adaptações\pause\\
 	\item Talvez seja mais útil se um jogo for desenvolvido desde o começo com isso em mente
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Considerações finais}
+	Obrigado! Dúvidas?
+\end{frame}
+
+\begin{frame}{Referências}
+	\begin{itemize}
+		\item Ansel, Jason, et al. "Opentuner: An extensible framework for program autotuning." Proceedings of the 23rd international conference on Parallel architectures and compilation. ACM, 2014.
+		\item OpenTTD https://www.openttd.org/en/, Novembro 2015
 	\end{itemize}
 \end{frame}
 
