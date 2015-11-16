@@ -34,7 +34,7 @@
 
 \begin{frame}[fragile]
 	\frametitle{Otimização de Parâmetros}
-	  \begin{itemize}[<+- | alert@+>]
+	  \begin{itemize}
 	  	\item Aplicação com várias configurações
 	  	\item Problema: Encontrar melhor conjunto de configurações
 	  	\item Autotuning é uma alternativa interessante
@@ -43,9 +43,9 @@
 \end{frame}
 
 \begin{frame}{OpenTuner}
-	Arcabouço para Autotuning\pause\\
-	Apresenta diversas técnicas de busca\pause\\
-	'Exploitation' x 'Exploration'\pause\\
+	Arcabouço para Autotuning\\
+	Apresenta diversas técnicas de busca\\
+	'Exploitation' x 'Exploration'\\
 	Infelizmente, ainda não oferece paralelismo na execução de testes
 \end{frame}
 
@@ -129,7 +129,7 @@
 \end{frame}
 
 \begin{frame}{OpenTTD}	
-	\begin{itemize}	[<+- | alert@+>]
+	\begin{itemize}	
 		\item Simulador de gerência de uma empresa de transportes
 		\item Projeto Open Source
 		\item Possui suporte para IAs
@@ -139,7 +139,7 @@
 
 \section{Experimentos}
 \begin{frame}{Experimentos}
-	Verificar os resultados de alterar os custos do \textit{pathfinder} de uma IA.\pause\\
+	Verificar os resultados de alterar os custos do \textit{pathfinder} de uma IA.\\
 	Para isso, escolhemos a IA ChooChoo, que é focada em trens.
 \end{frame}
 
@@ -155,19 +155,39 @@
 	
 \begin{frame}{Experimentos}
 	\begin{itemize}
-	\item Diversas adaptações feitas para o funcionamento do OpenTTD junto com o OpenTuner \pause\\
+	\item Diversas adaptações feitas para o funcionamento do OpenTTD junto com o OpenTuner \\
 %	Builder <-> Tuner <-> Handler <-> OpenTTD <-> TRENS!!!!\pause\\
-	\item OpenTTD compilado para funcionar em uma velocidade muito maior que a normal\pause\\
-	\item Pode medir valor da empresa, dinheiro em caixa ou lucro no último quartil\pause\\
-	\item Mede ao final de N anos, configurável\pause\\
-	\item Suporta iterações de 1 $\leq$ N $\leq$ 14 IAs, tirando média dos valores obtidos\pause\\
-	\item Foram feitos testes de 10 e 30 anos para lucro e caixa, e 10 e 50 para valor da empresa, com 6 ou 8 IAs por teste\pause\\
-	\item Demora para gerar resultados \pause -> Utilizando máquinas não-dedicadas\pause\\
+	\item OpenTTD compilado para funcionar em uma velocidade muito maior que a normal\\
+	\item Pode medir valor da empresa, dinheiro em caixa ou lucro no último quartil\\
+	\item Mede ao final de N anos, configurável\\
+	\item Suporta iterações de 1 $\leq$ N $\leq$ 14 IAs, tirando média dos valores obtidos\\
+	\item Foram feitos testes de 10 e 30 anos para lucro e caixa, e 10 e 50 para valor da empresa, com 6 ou 8 IAs por teste\\
+	\item Demora para gerar resultados -> Utilizando máquinas não-dedicadas\\
 	\item Certa instabilidade
 	\end{itemize}
 \end{frame}
 
 \section{Resultados e Conclusões}
+
+\begin{frame}{Resultados e conclusões}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{money-30yrs}
+		\caption{Resultados dos testes para 30 anos}
+		\label{fig:money-30yrs}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}{Resultados e conclusões}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{money-30yrs-best}
+		\caption{Resultados dos testes para 30 anos}
+		\label{fig:money-30yrs-best}
+	\end{figure}
+	
+\end{frame}
 
 \begin{frame}{Resultados e conclusões}
 	\begin{figure}
@@ -189,24 +209,33 @@
 	
 \end{frame}
 
+\begin{frame}{Resultados e conclusões}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{money-10yrs-best}
+		\caption{Resultados dos testes para 10 anos}
+		\label{fig:money-10yrs-best}
+	\end{figure}
+	
+\end{frame}
+
 \begin{frame}{Resultados e Conclusões}
 	\begin{itemize}
-	\item Funciona! \pause De certa forma\pause\\
-	\item OpenTuner conseguiu resultados sem saber intrinsecamente como o programa funciona\pause \\
-	\item Custos de pathfinder tem resultados significativos em um aspecto maior do jogo.\pause\\
-	\item OpenTTD não foi feito pra ser automatizado, então usar o OpenTuner necessitou algumas adaptações\pause\\
+	\item Funciona!  De certa forma\\
+	\item OpenTuner conseguiu resultados sem saber intrinsecamente como o programa funciona \\
+	\item Custos de pathfinder tem resultados significativos em um aspecto maior do jogo\\
+	\item OpenTTD não foi feito pra ser automatizado, então usar o OpenTuner necessitou algumas adaptações\\
 	\item Talvez seja mais útil se um jogo for desenvolvido desde o começo com isso em mente
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Considerações finais}
-	Obrigado! Dúvidas?
-\end{frame}
-
-\begin{frame}{Referências}
+	Obrigado! Dúvidas?\\
+	Referências/Links:\\
 	\begin{itemize}
 		\item Ansel, Jason, et al. "Opentuner: An extensible framework for program autotuning." Proceedings of the 23rd international conference on Parallel architectures and compilation. ACM, 2014.
-		\item OpenTTD https://www.openttd.org/en/, Novembro 2015
+		\item OpenTTD: https://www.openttd.org/en/, Novembro 2015
+		\item GitHub do projeto: https://github.com/imano-ob/opentunerstuff-openttd
 	\end{itemize}
 \end{frame}
 
