@@ -35,9 +35,37 @@ O OpenTTD é um clone de código aberto do clássico jogo Transport Tycoon Deluxe. 
 OpenTTD foi baseado no jogo original de 1994, que recebeu um patch feito pela comunidade em 1996. A versão de código aberto foi lançada como uma derivação de tal patch chamado TTDPatch, que visava resolver alguns problemas de ordem técnica do jogo, além de adicionar algumas funcionalidades como novos gráficos, veículos,e indústrias. Entretanto,este patch não podia alterar facetas mais profundas do jogo original, e era limitado aos sistemas e plataformas nos quais este poderia ser executado. Seguindo o mesmo espírito deste patch, o OpenTTD foi criado como uma obra de engenharia reversa do jogo original, recriando-o em linguagem C. Este processo começou em 2003, por autoria de Ludvig Strigeus, que desejava uma maneira de continuar jogando Transport Tycoon Deluxe que se adaptasse à novas tecnologias, e pudesse ser modificado de maneiras mais profundas pela comunidade. O jogo foi lançado oficialmente em 2004, e até o ano de 2010, este ainda era dependente dos gráficos, músicas e efeitos sonoros do jogo original. Estes recursos foram gradualmente substituídos por versões feitas pela comunidade, tornando-o independente dos materiais do jogo original. %[Citation needed?]
 %WebRef/Footnote pro About do site do OpenTTD
 
+%BEGIN RASCUNHO
+
+IAs existem, e são em Squirrel, que é uma linguadem de script com sintaxe tipo C++.
+
+%END RASCUNHO
+
 \section{Objetivos}
 
+%BEGIN RASCUNHO
+
+Conseguir integrar? Ver se funciona? E resultados vem de brinde se funcionar e forem interessantes?
+
+%END RASCUNHO
+
 \section{Integração}
+
+%Acho que aqui vai mais ou menos a estrutura do tuner?
+
+%BEGIN RASCUNHO
+
+Composto por módulos TTDTuner, que interage com o OpenTuner, TTDHandler, que interage com o OpenTTD, e o AIBuilder, que constrói as IAs. Além disso, uma IA base, que é uma versão modificada e incompleta da IA ChooChoo. Essa IA, além de ter os custos de pathfinding removidos para serem determinados pelo tuner, tem outputs a mais para relatar o resultado depois de um certo tempo. Tem um config que determina a pasta onde está a IA base, onde fica o diretório de IAs do OpenTTD, e qual o comando pra chamar o OpenTTD. Por linha de comando, dá pra especificar qual valor observar, quantos anos dura cada iteração da simulação, e quantas IAs existirão por iteração.
+
+Primeiro, conversar com o OpenTuner. Módulo chamado TTDTuner. Conversa com OpenTuner, pega as configurações, escolhe um número de ID e chama o AIBuilder, que constrói a IA e coloca na pasta de IAs do OpenTTD, e em seguida avisa pro handler iniciar essas IAs no jogo. Em seguida, ele espera a iteração terminar e recebe os resultados do Handler, e pede para o mesmo reiniciar o jogo. Por último, ele tira a média dos resultados observados e envia isso para o OpenTuner.
+
+O builder funciona substituindo linhas com palavras-chave pré-determinadas em cada um dos arquivos a serem modificados, com cada palavra-chave sendo mapeada a uma substituição diferente. A lista de palavras-chave e esse mapeamento é independente para cada arquivo. O AIBuilder recebe um vetor de custos, um nome de parâmetro a ser avaliado, um número de anos e um ID do TTDTuner, que são usados para construir adequadamente as instruções que serão inseridas no código da IA gerada. O nome da IA é determinado pelo ID recebido, e é passado de volta para o tuner.
+
+O Handler cuida do OpenTTD. Ele envia comandos para o servidor via pipe para o stdin do servidor e lê os outputs dele. Ele é responsável por iniciar IAs, parar IAs, ler respostas, e reiniciar o servidor quando necessário. Após iniciar as IAs, ele espera um output do jogo que respeita um formato específico, definido pelo pasrão de output do OpenTTD e por uma convenção adotada para o ajuste fino. Ao detectar essa saída, que contém o resultado obtido e a identificação da IA, ele concatena esse resultado a um vetor de resultados, e devolve esse vetor quando todas as IAs terminarem.
+
+Por fim, o OpenTTD foi compilado para rodar muito mais rápido, mas o tuner funciona mesmo sem essa modificação, mas demora muito mais.
+
+%END RASCUNHO
 
 \chapter{Experimentos}
 %-coisas que aconteceram
