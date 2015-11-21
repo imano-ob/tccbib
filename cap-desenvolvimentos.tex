@@ -55,7 +55,7 @@ Conseguir integrar? Ver se funciona? E resultados vem de brinde se funcionar e f
 
 %BEGIN RASCUNHO
 
-Composto por módulos TTDTuner, que interage com o OpenTuner, TTDHandler, que interage com o OpenTTD, e o AIBuilder, que constrói as IAs. Além disso, uma IA base, que é uma versão modificada e incompleta da IA ChooChoo. Essa IA, além de ter os custos de pathfinding removidos para serem determinados pelo tuner, tem outputs a mais para relatar o resultado depois de um certo tempo. Tem um config que determina a pasta onde está a IA base, onde fica o diretório de IAs do OpenTTD, e qual o comando pra chamar o OpenTTD. Por linha de comando, dá pra especificar qual valor observar, quantos anos dura cada iteração da simulação, e quantas IAs existirão por iteração.
+Composto por módulos TTDTuner, que interage com o OpenTuner, TTDHandler, que interage com o OpenTTD, e o AIBuilder, que constrói as IAs. Além disso, uma IA base, que é uma versão modificada e incompleta da IA ChooChoo. Essa IA, além de ter os custos de pathfinding removidos para serem determinados pelo tuner, tem outputs a mais para relatar o resultado depois de um certo tempo. Tem um config que determina a pasta onde está a IA base, onde fica o diretório de IAs do OpenTTD, e qual o comando pra chamar o OpenTTD. Por linha de comando, dá pra especificar qual valor observar, quantos anos dura cada iteração da simulação, e quantas IAs existirão por iteração. Os valores medidos podem ser valor da empresa, lucro no último quartil, ou dinheiro em caixa.
 
 Primeiro, conversar com o OpenTuner. Módulo chamado TTDTuner. Conversa com OpenTuner, pega as configurações, escolhe um número de ID e chama o AIBuilder, que constrói a IA e coloca na pasta de IAs do OpenTTD, e em seguida avisa pro handler iniciar essas IAs no jogo. Em seguida, ele espera a iteração terminar e recebe os resultados do Handler, e pede para o mesmo reiniciar o jogo. Por último, ele tira a média dos resultados observados e envia isso para o OpenTuner.
 
@@ -63,11 +63,23 @@ O builder funciona substituindo linhas com palavras-chave pré-determinadas em ca
 
 O Handler cuida do OpenTTD. Ele envia comandos para o servidor via pipe para o stdin do servidor e lê os outputs dele. Ele é responsável por iniciar IAs, parar IAs, ler respostas, e reiniciar o servidor quando necessário. Após iniciar as IAs, ele espera um output do jogo que respeita um formato específico, definido pelo pasrão de output do OpenTTD e por uma convenção adotada para o ajuste fino. Ao detectar essa saída, que contém o resultado obtido e a identificação da IA, ele concatena esse resultado a um vetor de resultados, e devolve esse vetor quando todas as IAs terminarem.
 
-Por fim, o OpenTTD foi compilado para rodar muito mais rápido, mas o tuner funciona mesmo sem essa modificação, mas demora muito mais.
+Por fim, o OpenTTD foi compilado para rodar muito mais rápido, mas o tuner funciona mesmo sem essa modificação, mas demora muito mais. %<- Top quality writing
 
 %END RASCUNHO
 
 \chapter{Experimentos}
+
+%BEGIN RASCUNHO
+
+Para ver se o Tuner funcionava, foram realizados testes de 10 e 50 anos com 8 IAs por iteração para valor da empresa, e de 10 anos com 6 IAs e 30 anos com 8 IAs para dinheiro em caixa e lucro. Testes de 10 anos foram executados numa máquina virtual cedida pelo Gnann e os testes mais longos foram feitos na Rá, o servidor web do USPGameDev. A intenção original era rodar esses testes por uma semana, mas crashes em pontos arbitrários, ocorrendo entre 8 e 72 horas após o início dos testes. Para os testes de caixa e lucro, o valor de semente inicial para o gerador de mapa do OpenTTD foi fixado, mas não durante os testes de valor da empresa, porque derp. Um dia, existirão gráficos mostrando os resultados. Por enquanto, faça de conta que a linha abaixo são os gráficos:
+
+-----------------------------------------
+
+Apesar de todos os experimentos terem sido muito mais curtos do que inicialmente planejado, houve melhoras observadas pelo tuner. Ainda não foi feita a comparação com a IA original. E tudo isso sem o OpenTuner saber como funciona o OpenTTD!
+
+BTW, tentaram entrar no jogo da Rá, mas não conseguiram porque o servidor, compilado em modo gotta go fast, achava que os clientes eram lentos demais e dropou as conexões.
+
+%END RASCUNHO
 %-coisas que aconteceram
 
 %-Estrutura do programa
@@ -80,14 +92,15 @@ Por fim, o OpenTTD foi compilado para rodar muito mais rápido, mas o tuner funci
 
 %Insofar, experimentos apenas com valor da companhia.
 %Also, não guardamos as configurações. Deveríamos corrigir isso.
-Embora neste exemplo tenhamos apenas um capítulo,  entre a introdução
-e a conclusão de uma monografia podemos ter uma sequência de capítulos
-descrevendo o trabalho e os resultados. Estes podem descrever
-fundamentos, trabalhos relacionados, método/modelo/algoritmo proposto,
-experimentos realizados, resultados obtidos.
 
-Cada capítulo pode ser organizado em seções, que por sua vez pode
-conter subseções. 
+%Embora neste exemplo tenhamos apenas um capítulo,  entre a introdução
+%e a conclusão de uma monografia podemos ter uma sequência de capítulos
+%descrevendo o trabalho e os resultados. Estes podem descrever
+%fundamentos, trabalhos relacionados, método/modelo/algoritmo proposto,
+%experimentos realizados, resultados obtidos.
+%
+%Cada capítulo pode ser organizado em seções, que por sua vez pode
+%conter subseções. 
 
 %Um exemplo de figura está na figura~\ref{fig:graph}.
 %\begin{figure}[htb]
