@@ -11,6 +11,13 @@
 \chapter{Conclusões}
 \label{cap:conclusoes}
 
+Apesar de todos os empecilhos, foi observado que o OpenTuner conseguiu melhorar os resultados observados modificando apenas o vetor de custos do algoritmo de Pathfinding usado pela IA, mesmo sendo uma parte relativamente pequena de uma IA bastante complexa, e sem saber o funcionamento interno do jogo ou da IA. No momento, esses resultados podem ser questionáveis, devido à forma como o OpenTTD lida com as IAs, já que as medições podem ter tido uma variância considerável de tempo do jogo entre as medições.
+
+Além disso, houve dificuldades em automatizar o OpenTTD, que não pôde ser compilado se simultaneamente não houvesse interface gráfica e networking, exigia um conjunto de gráficos mesmo sendo executado em modo servidor dedicado, e compilava e carregava IAs pela primeira vez sem problemas sem suporte à biblioteca libzlo2, mas falhava ao reiniciar o jogo se fosse compilado dessa forma.
+%Será que isso merece um bug report, se ainda não existir? 
+
+Com isso em mente, talvez seja possível obter resultados melhores se o jogo for desenvolvido desde o começo para ser automatizado, e utilizando uma estrutura de \textit{tuner} que utiliza melhor as características do OpenTuner.
+%Aliás, se agente for pra Rec, eu já tenho algo em mente, mas que não vai dar tempo de fazer no momento.
 
 
 %Provavelmente funciona yaaaaaaay mas provavelmente rende mais se o jogo for projetado assim desde o começo yaaaaaaaaay
