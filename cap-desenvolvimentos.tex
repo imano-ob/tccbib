@@ -6,7 +6,7 @@
 \chapter{Otimização de Parâmetros}
 %-mostrar um pouco da base teórica pesquisada, com exemplos relevantes dos artigos citados
 %-mencionar trabalhos relacionados, bases teóricas de AutoTuning
-Otimização de parâmetros é um assunto que chama alguma atenção atualmente. Uma aplicação específica de otimização, a otimização de parâmetros consiste, basicamente, em encontrar os parâmetros que geram o resultado desejado da aplicação sendo otimizada. %<- Tenho reservas em relação ao wording daqui --Renan
+Otimização de parâmetros é um assunto que chama alguma atenção atualmente. Ela consiste, basicamente, em encontrar os parâmetros que geram o resultado desejado de uma aplicação sendo otimizada. %<- Tenho reservas em relação ao wording daqui --Renan
 Seja este objetivo a minimização do tempo de execução, ou algo como a maximização do resultado da computação feita, existem diversas maneiras de se fazer esta otimização. Até certo tempo, a única maneira de se realizar isto era por testes e esforço direto do programador, envolvendo dificuldades de implementação, testes planejados, e complexidade teórica. A otimização automatizada surgiu de um desejo de se relegar a tarefa de encontrar a melhor maneira de se executar uma tarefa para o computador. Assim sendo, diversos arcabouços e aplicações surgiram, com o propósito de fazer esta otimização de forma automatizada.% --[Citation Needed]
 
 \section{O OpenTuner}
@@ -21,7 +21,34 @@ Decidimos por estudar aplicações do OpenTuner no mundo real, em específico para 
 %Eram o que? SaltyBet, builds, IAs e gerção de mapa?
 %OpenTTD vai onde?
 \chapter{Ideias iniciais}
-Texto
+Inicialmente, desejávamos utilizar o OpenTuner em otimização de parâmetros em geradores de mapas. Seu propósito seria ser uma metaferramenta sobre o gerador de mapas de algum jogo, para otimizar a geração aleatória ou determinística de mapas com características desejáveis e quantificáveis.
+
+Várias ideias de diferentes jogos possíveis foram sugeridas, e inicialmente concordamos em utilizar um gerador de mapas para o jogo DooM. Sendo um jogo consideravelmente antigo e simples, o trabalho seria também simples. Não só existem implementações open-source do mesmo, como conseguimos encontrar um gerador de mapas de simples uso que poderia ser autotunado.
+
+Infelizmente, o fato de DooM ser um jogo muito antigo foi desfavorável ao projeto. Uma boa parte da comunidade de desenvolvedores de conteúdo sobre o jogo é extremamente antiga, com seus sites e fóruns foram desativados ou estão grandemente desatualizados. Mas o maior problema era  de ordem conceitual: como quantificar a qualidade de um mapa? Para o processo de autotuning, é necessário um resultado numérico, que não se pode derivar diretamente de um mapa. 
+%Expandir essa ideia!
+Pensamos em usar um bot como função de fitness para o mapa, mas novamente, encontramos uma comunidade e sites antigos e/ou desativados.
+
+Próximo na lista de ideias estava a otimização da distribuição de pontos para um personagem de RPG. Para cada personagem, existe um conjunto de atributos, com pontos que podem ser distribuídos entre eles; para cada atributo, uma determinada quantidade de pontos afeta de forma diferente os resultados finais que um personagem pode ter no decorrer do jogo (um maior valor de Força, por exemplo, acarreta em ataques mais poderosos). Computacionalmente é uma questão muito mais simples, pois com este exemplo consegue-se derivar diretamente os valores a serem otimizados. Por exemplo, a quantidade de pontos de vida que um personagem possui, ou quantos pontos de dano o mesmo causa com um ataque.
+
+A escolha de qual jogo se usaria de base então torna-se o problema. Deve-se considerar a complexidade do jogo em si, dado que isto influencia diretamente na maneira de se modelar a distribuição de pontos no OpenTuner. Foi iniciada a implementação de um tuner simples com uma árvore de habilidades genérica como exemplo, para podermos ver como o programa se comportaria, e se ele daria os resultados ótimos em um bom tempo.
+
+Ideias de jogos a serem modelados foram: Torchlight 2, Path of Exile, The Elder Scrolls V: Skyrim, jogos do tipo Rogue-like, League of Legends, DOTA 2, e até algum possível sistema de RPG de mesa. Alguns destes foram descartados imediatemente por motivos como dificuldade de modelagem da árvore ou aleatoriedade demasiada envolvida no processo de testes.
+
+Foi considerado então possivelmente trabalhar com os jogos Torchlight 2 ou The Elder Scrolls V: Skyrim. Estes dois jogos possuem árvores de habilidades razoavelmente simples conceitualmente, então era necessário verificar a viabilidade da interação dos mesmos com o Python, para fazer-se a interface com o OpenTuner. Novos problemas foram encontrados, na forma de incompatibilidades técnicas. As comunidades de desenvolvimento de conteúdo de Torchlight e de Skyrim trabalham primariamente com ferramentas fornecidas pelos desenvolvedores, que envolvem plataformas e linguagens de scripting próprias dos jogos, sem interação com linha de comando externa, ou possibilidade de alteração de atributos de personagem de fora do jogo. Em ambos os jogos, de maneiras similares, apenas é possível manipular o jogo com uma ferramenta externa própria, feita pelos desenvolvedores, ou internamente por um console isolado do sistema operacional, com comandos limitados. Adicionalmente, tentativas de alterar os arquivos de dados de personagem dos jogos mostraram-se demasiadamente complexas, por envolverem arquivos encriptados de forma complexa, e não existir nenhum método diretamente acessível de realizar esta decodificação.
+
+%TODO: Arrumar esta parte
+Alternativamente, foi sugerido em uma reunião, a possibilidade de integração do OpenTuner em um bot que escolhe técnicas de aposta, integrando-o no Salty Bet, um jogo online onde pode-se apostar dinheiro virtual em personagens de um jogo de luta, todos controlados por inteligências artificiais. O bot trabalharia lendo a conversa dos usuários, onde os resultados são anunciados, e devolvendo para o tuner, em quem foi a aposta, de quanto foi, e o resultado.
+
+Foi feito um novo esforço para tentar trabalhar com Doom e seu gerador de mapas. A pesquisa por bots que pudessem jogar consistentemente o modo single-player de Doom foi iniciada novamente, mas encontrou novamente os mesmo problemas que envolvem a pesquisa de um programa tão antigo. Muitos sites antigos e desatualizados foram encontrados, e muitos projetos parados há anos. Mesmo encontrando uma comunidade recente de jogadores de ports de Doom, não obtivemos sucesso em encontrar os elusivos bots.
+
+Foi dada a ideia, por nosso orientador, de mover os esforços para um jogo mais recente, mas similar em espírito, como Quake Arena. O fato de um doutorando do professor Goldman ter trabalhado anteriormente com esta plataforma foi um ponto positivo levantado em uma reunião.
+%Mencionar as ideias com SaltyBet
+%TODO: Arrumar esta parte
+
+%Inserir aqui o exemplo das árvores de habilidade!
+
+%TODO: Introduzir o OpenTTD como o jogo escolhido, para expandi-lo na próxima seção
 
 \chapter{OpenTTD}
 \section{O jogo}
