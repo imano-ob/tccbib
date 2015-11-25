@@ -37,18 +37,11 @@ Ideias de jogos a serem modelados foram: Torchlight 2, Path of Exile, The Elder 
 
 Foi considerado então possivelmente trabalhar com os jogos Torchlight 2 ou The Elder Scrolls V: Skyrim. Estes dois jogos possuem árvores de habilidades razoavelmente simples conceitualmente, então era necessário verificar a viabilidade da interação dos mesmos com o Python, para fazer-se a interface com o OpenTuner. Novos problemas foram encontrados, na forma de incompatibilidades técnicas. As comunidades de desenvolvimento de conteúdo de Torchlight e de Skyrim trabalham primariamente com ferramentas fornecidas pelos desenvolvedores, que envolvem plataformas e linguagens de scripting próprias dos jogos, sem interação com linha de comando externa, ou possibilidade de alteração de atributos de personagem de fora do jogo. Em ambos os jogos, de maneiras similares, apenas é possível manipular o jogo com uma ferramenta externa própria, feita pelos desenvolvedores, ou internamente por um console isolado do sistema operacional, com comandos limitados. Adicionalmente, tentativas de alterar os arquivos de dados de personagem dos jogos mostraram-se demasiadamente complexas, por envolverem arquivos encriptados de forma complexa, e não existir nenhum método diretamente acessível de realizar esta decodificação.
 
-%TODO: Arrumar esta parte
-Alternativamente, foi sugerido em uma reunião, a possibilidade de integração do OpenTuner em um bot que escolhe técnicas de aposta, integrando-o no Salty Bet, um jogo online onde pode-se apostar dinheiro virtual em personagens de um jogo de luta, todos controlados por inteligências artificiais. O bot trabalharia lendo a conversa dos usuários, onde os resultados são anunciados, e devolvendo para o tuner, em quem foi a aposta, de quanto foi, e o resultado.
-
-Foi feito um novo esforço para tentar trabalhar com Doom e seu gerador de mapas. A pesquisa por bots que pudessem jogar consistentemente o modo single-player de Doom foi iniciada novamente, mas encontrou novamente os mesmo problemas que envolvem a pesquisa de um programa tão antigo. Muitos sites antigos e desatualizados foram encontrados, e muitos projetos parados há anos. Mesmo encontrando uma comunidade recente de jogadores de ports de Doom, não obtivemos sucesso em encontrar os elusivos bots.
-
-Foi dada a ideia, por nosso orientador, de mover os esforços para um jogo mais recente, mas similar em espírito, como Quake Arena. O fato de um doutorando do professor Goldman ter trabalhado anteriormente com esta plataforma foi um ponto positivo levantado em uma reunião.
-%Mencionar as ideias com SaltyBet
-%TODO: Arrumar esta parte
-
 %Inserir aqui o exemplo das árvores de habilidade!
 
-%TODO: Introduzir o OpenTTD como o jogo escolhido, para expandi-lo na próxima seção
+Uma ideia que foi sugerida à parte destas outras, apenas pela discussão dos métodos, foi criar um bot que apostasse no site SaltyBet. Este site consiste de uma stream de vídeo com um jogo de luta sem jogadores, apenas com IAs controlando os personagens. Usuários que acessam o site podem apostar dinheiro virtual, referido como Salt Dollars, em qual personagem preferirem. O bot leria as entradas do chat, onde os personagens envolvidos e os resultados são anunciados, e daria estar informações para o OpenTuner. O OpenTuner, por sua vez, gravaria os resultados obtidos, e escolheria a \textit{a melhor estratégia de apostas} para decidir em qual personagem se apostaria, e quanto. Sendo apenas uma discussão de viabilidade, esta ideia não foi seguida.
+
+Finalmente, o jogo que realmente chamou atenção para si neste estudo de viabilidade foi o OpenTTD. É um simulador de gerência de empresa de transportes, o que o distancia dos gêneros dos jogos estudados anteriormente. O que realmente causou a sua escolha para o projeto foram o fato de o mesmo ser um jogo de código aberto, e que existe uma simples maneira de interface com a linha de comando do sistema.
 
 \chapter{OpenTTD}
 \section{O jogo}
