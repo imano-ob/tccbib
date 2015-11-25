@@ -1,9 +1,10 @@
 %% ------------------------------------------------------------------------- %%
 
 \chapter{Resultados}
- Um dia, existirão gráficos mostrando os resultados. Por enquanto, faça de conta que a linha abaixo são os gráficos:
+ Apesar de todos os experimentos terem sido muito mais curtos do que inicialmente planejado, houve melhoras observadas pelo tuner. Ainda não foi feita a comparação com a IA original. E tudo isso sem o OpenTuner saber como funciona o OpenTTD!
  
- -----------------------------------------
+ Uma observação à parte sobre os testes realizados: em determinado momento durante os testes no servidor Rá, foi tentada uma conexão externa com as instâncias de teste do jogo. O próprio sistema do jogo recusou a conexão, por assumir que o cliente estava rodando em uma velocidade lenta demais para a conexão. Isto aconteceu devido à compilação para alta velocidade feita para o OpenTTD.
+ 
 \begin{figure}[h!]\centering
 \begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{value-50yrs}
 \end{subfigure}
@@ -63,15 +64,12 @@
      	\caption{}
      	\label{fig:money-10yrs}
      \end{figure}
- 
- Apesar de todos os experimentos terem sido muito mais curtos do que inicialmente planejado, houve melhoras observadas pelo tuner. Ainda não foi feita a comparação com a IA original. E tudo isso sem o OpenTuner saber como funciona o OpenTTD!
- 
- BTW, tentaram entrar no jogo da Rá, mas não conseguiram porque o servidor, compilado em modo gotta go fast, achava que os clientes eram lentos demais e dropou as conexões.
+
 
 \chapter{Conclusões}
 \label{cap:conclusoes}
 
-Apesar de todos os empecilhos, foi observado que o OpenTuner conseguiu melhorar os resultados observados modificando apenas o vetor de custos do algoritmo de Pathfinding usado pela IA, mesmo sendo uma parte relativamente pequena de uma IA bastante complexa, e sem saber o funcionamento interno do jogo ou da IA. No momento, esses resultados podem ser questionáveis, devido à forma como o OpenTTD lida com as IAs, já que as medições podem ter tido uma variância considerável de tempo do jogo entre as medições.
+Apesar de todos os empecilhos, foi observado que o OpenTuner conseguiu melhorar os resultados observados modificando apenas o vetor de custos do algoritmo de Pathfinding usado pela IA. Mesmo esta sendo uma parte relativamente pequena de uma IA bastante complexa, e sem saber o funcionamento interno do jogo ou da IA, pode-se ver a diferença nos resultados obtidos. No momento, esses resultados podem ser questionáveis, devido à forma como o OpenTTD lida com as IAs, já que as medições podem ter tido uma variância considerável de tempo do jogo entre as medições.
 
 Além disso, houve dificuldades em automatizar o OpenTTD, que não pôde ser compilado se simultaneamente não houvesse interface gráfica e networking, exigia um conjunto de gráficos mesmo sendo executado em modo servidor dedicado, e compilava e carregava IAs pela primeira vez sem problemas sem suporte à biblioteca libzlo2, mas falhava ao reiniciar o jogo se fosse compilado dessa forma.
 %Será que isso merece um bug report, se ainda não existir? 
