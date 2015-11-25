@@ -1,8 +1,68 @@
 %% ------------------------------------------------------------------------- %%
+
 \chapter{Resultados}
  Um dia, existirão gráficos mostrando os resultados. Por enquanto, faça de conta que a linha abaixo são os gráficos:
  
  -----------------------------------------
+\begin{figure}[h!]\centering
+\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{value-50yrs}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=1\linewidth]{value-50yrs-best}
+\end{subfigure}
+\caption{}
+\label{fig:value-50yrs}
+\end{figure}
+
+ \begin{figure}[h!]\centering
+ 	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{value-10yrs}
+ 	\end{subfigure}
+ 	\begin{subfigure}{0.4\textwidth}
+ 		\includegraphics[width=1\linewidth]{value-10yrs-best}
+ 	\end{subfigure}
+ 	\caption{}
+ 	\label{fig:value-10yrs}
+ \end{figure}
+ 
+  \begin{figure}[h!]\centering
+  	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{profit-30yrs}
+  	\end{subfigure}
+  	\begin{subfigure}{0.4\textwidth}
+  		\includegraphics[width=1\linewidth]{profit-30yrs-best}
+  	\end{subfigure}
+  	\caption{}
+  	\label{fig:profit-30yrs}
+  \end{figure}
+  
+   \begin{figure}[h!]\centering
+   	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{profit-10yrs}
+   	\end{subfigure}
+   	\begin{subfigure}{0.4\textwidth}
+   		\includegraphics[width=1\linewidth]{profit-10yrs-best}
+   	\end{subfigure}
+   	\caption{}
+   	\label{fig:profit-10yrs}
+   \end{figure}
+   
+    \begin{figure}[h!]\centering
+    	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{money-30yrs}
+    	\end{subfigure}
+    	\begin{subfigure}{0.4\textwidth}
+    		\includegraphics[width=1\linewidth]{money-30yrs-best}
+    	\end{subfigure}
+    	\caption{}
+    	\label{fig:money-30yrs}
+    \end{figure}
+    
+     \begin{figure}[h!]\centering
+     	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{money-10yrs}
+     	\end{subfigure}
+     	\begin{subfigure}{0.4\textwidth}
+     		\includegraphics[width=1\linewidth]{money-10yrs-best}
+     	\end{subfigure}
+     	\caption{}
+     	\label{fig:money-10yrs}
+     \end{figure}
  
  Apesar de todos os experimentos terem sido muito mais curtos do que inicialmente planejado, houve melhoras observadas pelo tuner. Ainda não foi feita a comparação com a IA original. E tudo isso sem o OpenTuner saber como funciona o OpenTTD!
  
@@ -17,7 +77,7 @@ Além disso, houve dificuldades em automatizar o OpenTTD, que não pôde ser compil
 %Será que isso merece um bug report, se ainda não existir? 
 
 Com isso em mente, talvez seja possível obter resultados melhores se o jogo for desenvolvido desde o começo para ser automatizado, e utilizando uma estrutura de \textit{tuner} que utiliza melhor as características do OpenTuner.
-%Aliás, se agente for pra Rec, eu já tenho algo em mente, mas que não vai dar tempo de fazer no momento.
+%Aliás, se a gente for pra Rec, eu já tenho algo em mente, mas que não vai dar tempo de fazer no momento.
 
 
 %Provavelmente funciona yaaaaaaay mas provavelmente rende mais se o jogo for projetado assim desde o começo yaaaaaaaaay
