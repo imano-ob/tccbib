@@ -96,11 +96,26 @@ Por fim, o OpenTTD foi compilado para rodar muito mais rápido, mas o tuner funci
 
 %END RASCUNHO
 
-\chapter{Experimentos}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.7\linewidth]{Diagrama1}
+%\caption[Estrutura do \textit{tuner} implementado]{}
+%\caption{}
+%\label{fig:Diagrama1}
+%\end{figure}
+%\chapter{Experimentos}
 
 %BEGIN RASCUNHO
 
-Para ver se o Tuner funcionava, foram realizados testes de 10 e 50 anos com 8 IAs por iteração para valor da empresa, e de 10 anos com 6 IAs e 30 anos com 8 IAs para dinheiro em caixa e lucro. Testes de 10 anos foram executados numa máquina virtual cedida pelo Gnann e os testes mais longos foram feitos na Rá, o servidor web do USPGameDev. A intenção original era rodar esses testes por uma semana, mas crashes em pontos arbitrários, ocorrendo entre 8 e 72 horas após o início dos testes. Para os testes de caixa e lucro, o valor de semente inicial para o gerador de mapa do OpenTTD foi fixado, mas não durante os testes de valor da empresa, porque derp.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{Diagrama1}
+\caption{Estrutura do \textit{tuner} implementado}
+\label{fig:Diagrama1}
+\end{figure}
+
+
+Para ver se o Tuner funcionava, foram realizados testes de 10 e 50 anos com 8 IAs por iteração para valor da empresa, e de 10 anos com 6 IAs e 30 anos com 8 IAs para dinheiro em caixa e lucro. A IA utilizada foi uma versão modificada da ChooChoo \footnote{\url{http://www.tt-forums.net/viewtopic.php?t=44225}}. Testes de 10 anos foram executados numa máquina virtual cedida pelo Gnann e os testes mais longos foram feitos na Rá, o servidor web do USPGameDev. A intenção original era rodar esses testes por uma semana, mas crashes em pontos arbitrários, ocorrendo entre 8 e 72 horas após o início dos testes. Para os testes de caixa e lucro, o valor de semente inicial para o gerador de mapa do OpenTTD foi fixado, mas não durante os testes de valor da empresa, porque derp.
 
 %END RASCUNHO
 %-coisas que aconteceram
