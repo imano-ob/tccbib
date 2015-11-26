@@ -3,11 +3,12 @@
 
 %\chapter{Desenvolvimentos}
 %\label{cap:desenvolvimentos}
-\chapter{Otimização de Parâmetros}
+\chapter{Fundamentação Teórica}
+\section{Otimização de Parâmetros}
 %-mostrar um pouco da base teórica pesquisada, com exemplos relevantes dos artigos citados
 %-mencionar trabalhos relacionados, bases teóricas de AutoTuning
-Otimização de parâmetros é um assunto que chama alguma atenção atualmente. Ela consiste, basicamente, em encontrar os parâmetros que geram o resultado desejado de uma aplicação sendo otimizada. %<- Tenho reservas em relação ao wording daqui --Renan
-Seja este objetivo a minimização do tempo de execução, ou algo como a maximização do resultado da computação feita, existem diversas maneiras de se fazer esta otimização. Até certo tempo, a única maneira de se realizar isto era por testes e esforço direto do programador, envolvendo dificuldades de implementação, testes planejados, e complexidade teórica. A otimização automatizada surgiu de um desejo de se relegar a tarefa de encontrar a melhor maneira de se executar uma tarefa para o computador. Assim sendo, diversos arcabouços e aplicações surgiram, com o propósito de fazer esta otimização de forma automatizada.% --[Citation Needed]
+Otimização de parâmetros é um assunto que levanta certo interesse atualmente. Ela consiste em encontrar os parâmetros que geram o resultado desejado de uma aplicação sendo otimizada. %<- Tenho reservas em relação ao wording daqui --Renan
+Seja este objetivo a minimização do tempo de execução, ou algo como a maximização do resultado da computação feita, existem diversas maneiras de se fazer esta otimização. Costumeiramente, a única maneira de se realizar isto era por testes e esforço direto do programador, envolvendo dificuldades de implementação, testes planejados, e complexidade teórica. A otimização automatizada surgiu de um desejo de se relegar a tarefa de encontrar a melhor maneira de se executar uma tarefa para o computador. Assim sendo, diversos arcabouços e aplicações surgiram, com o propósito de fazer esta otimização de forma automatizada.% --[Citation Needed]
 
 \section{O OpenTuner}
 %-explicar o que é, e o que esperamos dele
@@ -20,7 +21,7 @@ Decidimos por estudar aplicações do OpenTuner no mundo real, em específico para 
 %TODO: Outras ideias
 %Eram o que? SaltyBet, builds, IAs e gerção de mapa?
 %OpenTTD vai onde?
-\chapter{Ideias iniciais}
+\section{Estudos Preliminares}
 Inicialmente, desejávamos utilizar o OpenTuner em otimização de parâmetros em geradores de mapas. Seu propósito seria ser uma metaferramenta sobre o gerador de mapas de algum jogo, para otimizar a geração aleatória ou determinística de mapas com características desejáveis e quantificáveis.
 
 Várias ideias de diferentes jogos possíveis foram sugeridas, e inicialmente concordamos em utilizar um gerador de mapas para o jogo DooM. Sendo um jogo consideravelmente antigo e simples, o trabalho seria também simples. Não só existem implementações open-source do mesmo, como conseguimos encontrar um gerador de mapas de simples uso que poderia ser autotunado.
@@ -62,6 +63,7 @@ OpenTTD foi baseado no jogo original de 1994, que recebeu um patch feito pela co
 O OpenTTD tem suporte a inteligências artificiais, cujo comportamento é definido por um conjunto de scripts Squirrel , que é "uma linguagem de alto nível, imperativa e orientada a objetos, projetada para ser uma linguagem de script leve que se adequa aos requerimentos de banda, memória e processamento em tempo real para aplicações como jogos"\footnote{\url{www.squirrel-lang.org}}. Sua sintaxe é bastante similar à de C++. O OpenTTD tem seu próprio interpretador Squirrel, que executa um certo número de instruções de cada IA antes de interrompê-la por um breve período de tempo. Estes scripts são responsáveis por todas as ações que a IA pode tomar, como quais pontos de produção e consumo atender com seus veículos, como construir um caminho que atenda esse transporte, e quais veículos utilizar para isso.
 %END RASCUNHO
 
+\chapter{Implementação}
 \section{Objetivos}
 
 %BEGIN RASCUNHO
@@ -134,3 +136,10 @@ Para verificar o funcionamento do Tuner, foram realizados testes de 10 e 50 anos
 %\includegraphics[width=5cm]{figuras/graph}
 %\caption{\label{fig:graph}Exemplo de uma figura.}
 %\end{figure}
+
+\section{Experimentos}
+%Detalhar como foram os experimentos
+
+
+
+
