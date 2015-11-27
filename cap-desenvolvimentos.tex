@@ -26,7 +26,8 @@ Programar por Otimização é uma maneira de lidar com isso -> Autotuning
 Autotuning vem sendo usado em áreas como computação de alta performance e computação gráfica
 Encontra o mesmo problema de otimização manual: tuners normalmente são feitos application-specific
 Três desafios: Encontrar a representação de parâmetros correta para o programa
-	O tamanho do espaço de configurações válido (tosse tosse 10^30 tosse tosse)
+	O tamanho do espaço de configurações válido %(tosse tosse 10^30 tosse tosse)
+	%Miojo notes: Não comite e push algo que não compila, jovem. A linha de cima quebra. >_> 
 	A topografia do espaço de configurações pode ser muito complexa para métodos de busca (simples||específicos)
 
 
@@ -47,7 +48,7 @@ Inicialmente, desejávamos utilizar o OpenTuner em otimização de parâmetros em ge
 
 Várias ideias de diferentes jogos possíveis foram sugeridas, e inicialmente concordamos em utilizar um gerador de mapas para o jogo DooM. Sendo um jogo consideravelmente antigo e simples, o trabalho seria também simples. Não só existem implementações open-source do mesmo, como conseguimos encontrar um gerador de mapas de simples uso que poderia ser autotunado.
 
-Infelizmente, o fato de DooM ser um jogo muito antigo foi desfavorável ao projeto. Uma boa parte da comunidade de desenvolvedores de conteúdo sobre o jogo é extremamente antiga, com seus sites e fóruns foram desativados ou estão grandemente desatualizados. Mas o maior problema era  de ordem conceitual: como quantificar a qualidade de um mapa? Para o processo de autotuning, é necessário um resultado numérico, que não se pode derivar diretamente de um mapa. 
+Infelizmente, o fato de DooM ser um jogo muito antigo foi desfavorável ao projeto. Uma boa parte da comunidade de desenvolvedores de conteúdo sobre o jogo é extremamente antiga, com seus sites e fóruns foram desativados ou estão grandemente desatualizados. Mas o maior problema era  de ordem conceitual: como quantificar a qualidade de um mapa? Para o processo de autotuning, é necessário um resultado numérico, que não se pode derivar diretamente de um mapa. %<- Lies. Dá sim. E dá pra pegar número que fazem sentido. Isso não significa que seja fácil ou uma modelagem perfeita.
 %Expandir essa ideia!
 Pensamos em usar um bot como função de fitness para o mapa, mas novamente, encontramos uma comunidade e sites antigos e/ou desativados.
 
@@ -89,7 +90,7 @@ O OpenTTD tem suporte a inteligências artificiais, cujo comportamento é definido
 
 %BEGIN RASCUNHO
 
-Para avaliar a aplicabilidade de técnicas de ajuste fino em jogos, neste trabalho foi feito um \textit{tuner} para o vetor de custos de Pathfinding da IA, por ser um conjunto de valores mais simples de se trabalhar. Serão observados fatores como facilidade de implementação, funcionamento adequado e resultados obtidos. 
+Para avaliar a aplicabilidade de técnicas de ajuste fino em jogos, neste trabalho foi feito um \textit{tuner} para o vetor de custos de Pathfinding para construção de trilhos da IA, por ser um conjunto de valores mais simples de se trabalhar. Serão observados fatores como facilidade de implementação, funcionamento adequado e resultados obtidos. 
 
 %Conseguir integrar? Ver se funciona? E resultados vem de brinde se funcionar e forem interessantes?
 
@@ -106,8 +107,6 @@ O módulo que realiza a comunicação com o OpenTuner chama-se TTDTuner. Ele recebe
 O AIBuilder funciona substituindo linhas com palavras-chave pré-determinadas em cada um dos arquivos a serem modificados, com cada palavra-chave sendo mapeada a uma substituição diferente. A lista de palavras-chave e o mapeamento destas é independente para cada arquivo. O AIBuilder recebe um vetor de custos, um nome de parâmetro a ser avaliado, um número de anos e um ID do TTDTuner, que são usados para construir adequadamente as instruções que serão inseridas no código da IA gerada. O nome da IA é determinado pelo ID recebido, e é passado de volta para o TTDTuner.
 
 O TTDHandler realiza a interface com o OpenTTD. Ele envia comandos para o servidor via pipe para o stdin do servidor e lê a saída retornada. O TTDHandler é responsável por iniciar IAs, parar IAs, ler respostas, e reiniciar o servidor quando necessário. Após iniciar as IAs, ele espera uma saída em formato específico vinda do jogo, formato este definido pelo padrão do OpenTTD e por uma convenção adotada para o ajuste fino realizado aqui. Ao detectar esta saída, que contém o resultado obtido e a identificação da IA, o TTDHandler concatena este resultado em um vetor de resultados, e devolve esse vetor quando todas as IAs terminarem.
-
-Para realizar os testes e produzir resultados de forma mais eficiente, o OpenTTD foi compilado com uma alteração que permite a execução dos ciclos de jogo muito mais rapidamente, reduzindo drasticamente o tempo necessário para uma iteração completa do OpenTuner. Essa alteração não era necessária para o funcionamento pleno dos testes, mas agilizou dramaticamente a geração de resultados.
 
 %\begin{figure}[h]
 %\centering
@@ -127,7 +126,6 @@ Para realizar os testes e produzir resultados de forma mais eficiente, o OpenTTD
 \label{fig:Diagrama1}
 \end{figure}
 
-Para verificar o funcionamento do Tuner, foram realizados testes de 10 e 50 anos com 8 IAs por iteração para valor da empresa, e de 10 anos com 6 IAs e 30 anos com 8 IAs para dinheiro em caixa e lucro. Testes de 10 anos foram executados numa máquina virtual cedida por Wilson Gnann, e os testes mais longos foram feitos na Rá, o servidor web do USPGameDev. A intenção original seria rodar esses testes por uma semana, mas instabilidades causando que os testes fossem interrompidos ocorriam em pontos imprevisíveis da execução, entre 8 e 72 horas após o início dos testes. Para os testes de caixa e lucro, o valor de semente inicial para o gerador de mapa do OpenTTD foi fixado, mas não durante os testes de valor da empresa. Esta alteração foi pensada depois dos testes iniciais, como uma maneira de eliminar a influência de aleatoriedade do ambiente do jogo sobre os resultados.
 
 %END RASCUNHO
 %-coisas que aconteceram
@@ -159,7 +157,13 @@ Para verificar o funcionamento do Tuner, foram realizados testes de 10 e 50 anos
 %\end{figure}
 
 \section{Experimentos e Resultados}
-Apesar de todos os experimentos terem sido muito mais curtos do que inicialmente planejado, houve melhoras observadas pelo tuner. Ainda não foi feita a comparação com a IA original. E tudo isso sem o OpenTuner saber como funciona o OpenTTD!
+
+Para verificar o funcionamento do Tuner, foram realizados testes de 10 e 50 anos com 8 IAs por iteração para valor da empresa, e de 10 anos com 6 IAs e 30 anos com 8 IAs para dinheiro em caixa e lucro. Testes de 10 anos foram executados numa máquina virtual cedida por William Gnann, e os testes mais longos foram feitos na Rá, o servidor web do USPGameDev. O OpenTTD foi compilado com uma alteração que permite a execução dos ciclos de jogo muito mais rapidamente, reduzindo drasticamente o tempo necessário para uma iteração completa do OpenTuner. Essa alteração não era necessária para o funcionamento pleno dos testes, mas agilizou dramaticamente a geração de resultados.
+
+A intenção original seria rodar esses testes por uma semana, mas instabilidades causando que os testes fossem interrompidos ocorriam em pontos imprevisíveis da execução, entre 8 e 72 horas após o início dos testes. Para os testes de caixa e lucro, o valor de semente inicial para o gerador de mapa do OpenTTD foi fixado, mas não durante os testes de valor da empresa. Esta alteração foi pensada depois dos testes iniciais, como uma maneira de eliminar a influência de aleatoriedade do ambiente do jogo sobre os resultados. 
+%Miojo notes: na real eu tinha tentado fixar, mas eu não tenho certeza se estava. Eu chuto que não. Eventualmente eu decidi passar como argumento que era mais certeza.
+
+Apesar de todos os experimentos terem sido muito mais curtos do que inicialmente planejado, houve melhoras observadas pelo \textit{tuner}. Ainda não foi feita a comparação com a IA original.
 
 Uma observação à parte sobre os testes realizados: em determinado momento durante os testes no servidor Rá, foi tentada uma conexão externa com as instâncias de teste do jogo. O próprio sistema do jogo recusou a conexão, por assumir que o cliente estava rodando em uma velocidade lenta demais para a conexão. Isto aconteceu devido à compilação para alta velocidade feita para o OpenTTD.
 
