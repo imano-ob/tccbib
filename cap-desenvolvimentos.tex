@@ -10,6 +10,27 @@
 Otimização de parâmetros é um assunto que levanta certo interesse atualmente. Ela consiste em encontrar os parâmetros que geram o resultado desejado de uma aplicação sendo otimizada. %<- Tenho reservas em relação ao wording daqui --Renan
 Seja este objetivo a minimização do tempo de execução, ou algo como a maximização do resultado da computação feita, existem diversas maneiras de se fazer esta otimização. Costumeiramente, a única maneira de se realizar isto era por testes e esforço direto do programador, envolvendo dificuldades de implementação, testes planejados, e complexidade teórica. A otimização automatizada surgiu de um desejo de se relegar a tarefa de encontrar a melhor maneira de se executar uma tarefa para o computador. Assim sendo, diversos arcabouços e aplicações surgiram, com o propósito de fazer esta otimização de forma automatizada.% --[Citation Needed]
 
+Existem diferentes maneiras de se resolver um problema
+Programar com diferentes métodos/Programar apenas em um método
+
+Otimizar baseia-se em escolher melhor método para resolver um problema
+Escolher estes métodos é um problema
+Costumam ser deixados como escolha na forma de parâmetros
+
+"In our experience in the area of designing high-performance heuristic solvers for various hard combinatorial
+problems, building software in this manner leads to suboptimal results in terms of performance and
+adaptability to different use contexts." (\cite{hoos2012programming}).
+
+Programar por Otimização é uma maneira de lidar com isso -> Autotuning
+
+Autotuning vem sendo usado em áreas como computação de alta performance e computação gráfica
+Encontra o mesmo problema de otimização manual: tuners normalmente são feitos application-specific
+Três desafios: Encontrar a representação de parâmetros correta para o programa
+	O tamanho do espaço de configurações válido (tosse tosse 10^30 tosse tosse)
+	A topografia do espaço de configurações pode ser muito complexa para métodos de busca (simples||específicos)
+
+
+
 \section{O OpenTuner}
 %-explicar o que é, e o que esperamos dele
 %-dar exemplos mais detalhados
