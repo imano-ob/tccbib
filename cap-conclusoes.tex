@@ -17,16 +17,23 @@ Com isso em mente, talvez seja possível obter resultados melhores se o jogo for 
 
 \chapter{Parte Subjetiva}
 \section{Desafios e Frustrações}
-achar um aspecto de um jogo pra ser otimizado\\
-achar um jogo que fosse ao mesmo tempo simples de se trabalhar, e que tivesse algo interessante a ser otimizado\\
+
+Tivemos dificuldades em achar um jogo bom para realizar o tuning. Queríamos evitar criar um jogo só para isso, especialmente dado que as ideias iniciais exigiriam muito esforço só para desenvolver a parte a ser otimizada, e isso sem contar a implementação do tuner em si. Porém, praticamente todos os jogos que chegamos a discutir tinha algum problema, especialmente para automatizar os testes necessários para o processo. Além disso, extrair os dados gerados e analisá-los externamente seria difícil, devido à forma como são guardados, como também exigiria um conhecimento mais profundo de mecânicas e jogabilidade do jogo para ter uma modelagem aceitável, derrotando de certa forma o propósito de usar o OpenTuner.
+
+A falta de paralelismo na execução de testes do OpenTuner também foi um problema, já que no nosso caso, já que o jogo roda numa única thread, isso faria sentido. Seria possível usar uma parte do OpenTuner de forma meio errada para subverter isso, mas com seus próprios problemas. Outro problema mais sutil decorrente disso é a estrutura do Handler, que foi inicialmente projetado para interagir com diversas threads, cada uma correspondente a cada uma das IAs que estariam todas rodando no mesmo servidor. Essa estrutura acabou ficando complexa demais para o funcionamento atual, e isso pode ter sido um dos fatores que ocasionaram as falhas na execução de testes.
+
+Falando das falhas, essas foram um problema curioso. Não percebemos nenhum indício que aponta mais precisamente por que alguma coisa em algum momento parava de funcionar. Na Rá,simplesmente executava um número não fixo de iterações por um período de tempo não fixo e parava, sem mais mensagens, inclusive as de erros. Na máquina virtual, provavelmente acabava algum recurso eventualmente, já que acusava um erro de não adquirir um lock que era adquirido na linha imediatamente anterior. Ainda assim, não conseguimos identificar qual recurso estava vazando, e se isso de fato acontecia.
+
+%achar um aspecto de um jogo pra ser otimizado\\
+%achar um jogo que fosse ao mesmo tempo simples de se trabalhar, e que tivesse algo interessante a ser otimizado\\
 aaaaa porque tudo está tão desatualizado ou perdido na internet\\
-aaaaa porque continua crashando? (maquinas clandestinas)\\
-aaaaa porque não paralelismo nos testes?\\
+%aaaaa porque continua crashando? (maquinas clandestinas)\\
+%aaaaa porque não paralelismo nos testes?\\
 
 \section{Disciplinas Relacionadas}
 Uhhh as de computação genéricas?\\
 IA\\
-Concorrente?\\
+Concorrente?\\ %<- Sim. Apesar de que, se fizermos do jeito certo, talvez seja menos relevante.
 
 
 \section{Trabalhos Futuros}
