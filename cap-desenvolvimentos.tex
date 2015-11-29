@@ -31,6 +31,8 @@ OpenTuner é um arcabouço para a implementação de sistemas de otimização e ajuste
 
 OpenTuner introduziu o conceito de utilizar conjuntos de técnicas de busca para \textit{autotuning} de programas, o que permite que um número de técnicas diferentes trabalhem em conjunto para encontrar uma solução ótima. Estes conjuntos incluem técnicas refinadas de busca, preparadas para navegar espaços complexos, e utilizar representações mais sofisticadas de dados; isto permite que problemas de complexidade maior sejam resolvidos, de uma maneira que pode ser adaptada por diversos projetos. O OpenTuner é capaz de encontrar resultados em espaços de busca muitos grandes, passando de $10^{3600}$ possibilidades, como relatado no artigo (\cite{ansel2014opentuner}).
 
+O OpenTuner trata o problema de \textit{autotuning} como um problema de busca. O espaço de busca é composto de configurações, que são atribuições concretas de um conjunto de parâmetros. Parâmetros podem assumir diversas formas, como números simples, ou conjuntos complexos de dados. Um resultado é gerado executando-se o conjunto de configurações em uma forma específica ao seu domínio, e pode ser medido em performance, corretude da resposta ou outras métricas. Técnicas de busca são responsáveis por alterar as configurações utilizando manipuladores definidos pelo usuário. A figura \ref{fig:OpenTuner} ilustra a organização do funcionamento do OpenTuner.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{OpenTuner}
@@ -116,13 +118,6 @@ Cada IA deve ter ao menos um script de informações de identificação da IA e um s
 Cada IA pode ter também qualquer número de scripts auxiliares, que devem ficar na mesma pasta e serem chamados a partir do script principal.
 Essas IAs podem ser instanciadas durante o jogo, e cada uma que seja iniciada passa a assumir o controle de uma companhia, cujo comportamento é definido pelos seus scripts.
 
-
-%Explicar como as IAs ficam na pasta do OpenTTD
-%
-%Explicar como é o funcionamento básico de uma IA genérica
-%
-%Explicar como podemos interagir com uma IA
-
 \chapter{Implementação}
 \section{Objetivos}
 
@@ -133,7 +128,6 @@ Para avaliar a aplicabilidade de técnicas de ajuste fino em jogos, neste trabalh
 O \textit{tuner} implementado é composto pelo módulos TTDTuner, TTDHandler e AIBuilder. O TTDTuner interage com o OpenTuner, TTDHandler interage com o OpenTTD, e o AIBuilder constrói as IAs. Além destes, uma IA base que é uma versão modificada e incompleta dos arquivos da IA ChooChoo\footnote{\url{http://www.tt-forums.net/viewtopic.php?t=44225}, visitado em 29/11/15}. Essa IA, além de ter os custos de pathfinding removidos para serem determinados pelo \textit{autotuner}, tem mensagens de saída adicionadas para relatar os resultados depois de um certo tempo. Existe um arquivo de configuração, o qual determina a pasta onde está a IA base, onde fica o diretório de IAs do OpenTTD, e qual o comando a ser utilizado para iniciar o OpenTTD. Por linha de comando, pode-se especificar qual valor será observado, quantos anos irá duras cada iteração da simulação, e quantas IAs existirão por iteração. Os valores medidos podem ser valor da empresa, lucro no último quartil, ou dinheiro em caixa.
 
 O TTDTuner recebe as configurações do OpenTuner, escolhe um número de ID e inicia o AIBuilder, o qual constrói uma IA e a coloca na pasta apropriada do OpenTTD, e devolve o nome da IA gerada. Em seguida, o TTDTuner repassa esse nome para o TTDHandler, que carrega estas IAs no jogo. O TTDTuner então aguarda o final da iteração, marcado pelo recebimento dos resultados vindos do TTDHandler, e então requisita que o mesmo reinicie a sessão de jogo. Por final, a média dos resultados é tirada e enviada para o OpenTuner. 
-%Miojo notes: primeiro, o AIBuilder nem sabe que o handler existe, então ele não pode mandar sinal nenhum. Dois, sinal tem um significado bem específico, e não é isso que acontece. É só uma chamada de método, guys.
 
 O AIBuilder funciona substituindo linhas com palavras-chave pré-determinadas em cada um dos arquivos a serem modificados, com cada palavra-chave sendo mapeada a uma substituição diferente. A lista de palavras-chave e o mapeamento destas é independente para cada arquivo. O AIBuilder recebe um vetor de custos, um nome de parâmetro a ser avaliado, um número de anos e um ID do TTDTuner, que são usados para construir adequadamente as instruções que serão inseridas no código da IA gerada. O nome da IA é determinado pelo ID recebido, e é passado de volta para o TTDTuner.
 
@@ -145,16 +139,6 @@ O TTDHandler realiza a interface com o OpenTTD. Ele envia comandos para o servid
 \caption{Estrutura do \textit{tuner} implementado}
 \label{fig:Diagrama1}
 \end{figure}
-
-%-coisas que aconteceram
-
-%-Estrutura do programa
-% Construtor <-> Tuner <-> Handler <-> Server de OpenTTD
-% OpenTTD gambiarrado pra gotta go fast
-% Máquinas:
-%  máquina virtual cedida pelo Gnann, carinhosamente chamada derrota
-%  ra, o servidor web do uspgamedev
-%  não zillertal porque faltava uma biblioteca que somehow só fazia falta de vez em quando e que eu esqueci de pedir pra instalarem
 
 \section{Experimentos e Resultados}
 
@@ -171,6 +155,7 @@ Apesar de todos os experimentos terem sido muito mais curtos do que inicialmente
 
 Uma observação à parte sobre os testes realizados: em determinado momento durante os testes no servidor Rá, foi tentada uma conexão externa com as instâncias de teste do jogo. O próprio sistema do jogo recusou a conexão, por assumir que o cliente estava rodando em uma velocidade lenta demais para a conexão. Isto aconteceu devido à compilação para alta velocidade feita para o OpenTTD.
 
+A seguir, estão os gráficos criados com os resultados obtidos nos experimentos. Pode-se verificar, no geral, que o OpenTuner consegue obter resultados melhores conforme mais iterações passam. Na figura \ref{fig:value-50yrs}, podemos ver que as iterações iniciais mantiveram-se em uma média, mas valores melhores foram encontrados em iterações mais elevadas, como era de se esperar. Este teste ainda continha uma certa variância estocástica por interação do gerador de mapas com os testes; a semente do gerador não havia ainda sido fixada, o que causou as alterações radicais de valor observadas.
 \begin{figure}[h!]\centering
 	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{value-50yrs}
 	\end{subfigure}
@@ -181,7 +166,8 @@ Uma observação à parte sobre os testes realizados: em determinado momento durant
 	\label{fig:value-50yrs}
 \end{figure}
 
-\begin{figure}[h!]\centering
+Na figura \ref{fig:value-10yrs} pode-se ver os resultados de um teste similar, ainda utilizando o valor da empresa como resultado observado. As diferenças deste teste em relação ao anterior foram a duração de cada iteração e o gerador de mapas ter sua semente fixada. Isto remove o fator aleatório do mapa do teste, possibilitando resultados mais acurados. A redução da duração foi feita como uma maneira de se obter mais resultados, pois iterações de 50 anos levavam muito tempo para serem completas.
+\begin{figure}\centering
 	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{value-10yrs}
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
@@ -191,7 +177,7 @@ Uma observação à parte sobre os testes realizados: em determinado momento durant
 	\label{fig:value-10yrs}
 \end{figure}
 
-\begin{figure}[h!]\centering
+\begin{figure}\centering
 	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{profit-30yrs}
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
@@ -201,7 +187,7 @@ Uma observação à parte sobre os testes realizados: em determinado momento durant
 	\label{fig:profit-30yrs}
 \end{figure}
 
-\begin{figure}[h!]\centering
+\begin{figure}\centering
 	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{profit-10yrs}
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
@@ -211,7 +197,9 @@ Uma observação à parte sobre os testes realizados: em determinado momento durant
 	\label{fig:profit-10yrs}
 \end{figure}
 
-\begin{figure}[h!]\centering
+Nas figuras \ref{fig:profit-30yrs} e \ref{fig:profit-10yrs} podemos ver testes realizados utilizando uma forma diferente de verificar o resultado. Nestes testes, o lucro da empresa ao final de cada iteração foi medido, como uma alternativa ao valor da empresa. Utilizando o lucro, pode-se ter uma visão melhor do crescimento da empresa sobre os anos, e pode-se observar a melhora encontrada pelas técnicas de busca do OpenTuner. 
+
+\begin{figure}\centering
 	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{money-30yrs}
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
@@ -221,7 +209,7 @@ Uma observação à parte sobre os testes realizados: em determinado momento durant
 	\label{fig:money-30yrs}
 \end{figure}
 
-\begin{figure}[h!]\centering
+\begin{figure}\centering
 	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{money-10yrs}
 	\end{subfigure}
 	\begin{subfigure}{0.4\textwidth}
@@ -231,5 +219,5 @@ Uma observação à parte sobre os testes realizados: em determinado momento durant
 	\label{fig:money-10yrs}
 \end{figure}
 
-
+Por fim, são mostrados os gráficos dos experimentos onde o valor em caixa ao final de cada quartil foi medido. Pode-se observar na figura \ref{fig:money-10yrs} que, em casos em que não são executadas muitas iterações, o OpenTuner pode encontrar um melhor resultado nas primeiras iterações, e suas técnicas de busca não conseguem encontrar resultados melhores por algum tempo. Com iterações suficientes, como pode-se observar na figura \ref{fig:money-30yrs}, é possível ver um crescimento estável do resultado, mostrando que as técnicas de busca conseguiram funcionar corretamente.
 
