@@ -6,10 +6,7 @@
 
 Apesar de todos os empecilhos, foi observado que o OpenTuner conseguiu melhorar os resultados observados modificando apenas o vetor de custos do algoritmo de Pathfinding usado pela IA. Mesmo esta sendo uma parte relativamente pequena de uma IA bastante complexa, e sem saber o funcionamento interno do jogo ou da IA, pode-se ver a diferença nos resultados obtidos. No momento, esses resultados podem ser questionáveis, devido à forma como o OpenTTD lida com as IAs, já que as medições podem ter tido uma variância considerável de tempo do jogo entre as medições.
 
-Além disso, houve dificuldades em automatizar o OpenTTD, que não pôde ser compilado se simultaneamente não houvesse interface gráfica e networking, exigia um conjunto de gráficos mesmo sendo executado em modo servidor dedicado, e compilava e carregava IAs pela primeira vez sem problemas sem suporte à biblioteca libzlo2, mas falhava ao reiniciar o jogo se fosse compilado dessa forma.
-%Será que isso merece um bug report, se ainda não existir? 
-
-Com isso em mente, talvez seja possível obter resultados melhores se o jogo for desenvolvido desde o começo para ser automatizado, e utilizando uma estrutura de \textit{tuner} que aproveite melhor as características do OpenTuner.
+Com isso em mente, talvez seja possível obter resultados melhores se o jogo for desenvolvido com foco em automatização desde as etapas iniciais, e estruturando o \textit{tuner} de modo a aproveitar melhor as características do OpenTuner.
 %Aliás, se a gente for pra Rec, eu já tenho algo em mente, mas que não vai dar tempo de fazer no momento.
 
 
@@ -20,6 +17,9 @@ Com isso em mente, talvez seja possível obter resultados melhores se o jogo for 
 \subsection{Desafios e Frustrações}
 
 Tivemos dificuldades em achar um jogo bom para realizar o tuning. Queríamos evitar criar um jogo só para isso, especialmente dado que as ideias iniciais exigiriam muito esforço só para desenvolver a parte a ser otimizada, e isso sem contar a implementação do tuner em si. Porém, praticamente todos os jogos que chegamos a discutir tinha algum problema, especialmente para automatizar os testes necessários para o processo. Além disso, extrair os dados gerados e analisá-los externamente seria difícil, devido à forma como são guardados, como também exigiria um conhecimento mais profundo de mecânicas e jogabilidade do jogo para ter uma modelagem aceitável, derrotando de certa forma o propósito de usar o OpenTuner.
+
+Além disso, houve dificuldades em automatizar o OpenTTD, que não pôde ser compilado se simultaneamente não houvesse interface gráfica e networking, exigia um conjunto de gráficos mesmo sendo executado em modo servidor dedicado, e compilava e carregava IAs pela primeira vez sem problemas sem suporte à biblioteca libzlo2, mas falhava ao reiniciar o jogo se fosse compilado dessa forma.
+%Será que isso merece um bug report, se ainda não existir? 
 
 A falta de paralelismo na execução de testes do OpenTuner também foi um problema, já que no nosso caso, já que o jogo roda numa única thread, isso faria sentido. Seria possível usar uma parte do OpenTuner de forma meio errada para subverter isso, mas com seus próprios problemas. Outro problema decorrente disso é a estrutura do Handler, que foi inicialmente projetado para interagir com diversas threads, cada uma correspondente a cada uma das IAs que estariam todas rodando no mesmo servidor. Essa estrutura acabou ficando complexa demais para o funcionamento atual, e isso pode ter sido um dos fatores que ocasionaram as falhas na execução de testes.
 
