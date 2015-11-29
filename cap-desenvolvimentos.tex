@@ -89,22 +89,37 @@ OpenTTD foi baseado no jogo original de 1994, que recebeu um patch feito pela co
 	\label{fig:OpenTTDSS}
 \end{figure}
 
-No jogo, a única forma de se ganhar dinheiro é com o transporte de produtos ou passageiros de um lugar de origem, que produz esses recursos, até um local de destino, que os consome. Cada local produtor produz recursos diferentes, como uma fazenda que produz grãos e gado, e cada local consumidor consome um recurso diferente, como uma fábrica consome aço, grãos e gado. Alguns consumidores, por sua vez, geram outros produtos ao consumirem, como as já mencionadas fábricas, que ao receberem recursos, produzem bens. Para cada tipo de recurso, porém, não há discriminação além de que tipo é produzido ou consumido. Isso significa, por exemplo, que passageiros embarcam em qualquer estação e sempre desembarcam na próxima, não tendo um destino específico. O dinheiro recebido a cada transporte depende do tempo entre a produção e o consumo, e a distância entre o produtor e o consumidor. Quanto maior a demora, menor o pagamento, e quanto maior a distância, maior o dinheiro recebido. A carga e descarga é realizada em estações dedicadas, que devem estar próximas dos pontos de interesse. É possível juntar estações de veículos diferentes para serem tratados como uma única estação, compartilhando recursos que podem ser transportados por cada um dos veículos que a utilizam.
+No jogo, a única forma de se ganhar dinheiro é com o transporte de produtos ou passageiros de um lugar de origem, que produz esses recursos, até um local de destino, que os consome. Cada local produtor produz recursos diferentes, como uma fazenda que produz grãos e gado, e cada local consumidor consome um recurso diferente, como uma fábrica consome aço, grãos e gado.
+Alguns consumidores, por sua vez, geram outros produtos ao consumirem, como as já mencionadas fábricas, que ao receberem recursos, produzem bens.
+Para cada tipo de recurso, porém, não há discriminação além de que tipo é produzido ou consumido.
+Isso significa, por exemplo, que passageiros embarcam em qualquer estação e sempre desembarcam na próxima, não tendo um destino específico. O dinheiro recebido a cada transporte depende do tempo entre a produção e o consumo, e a distância entre o produtor e o consumidor. 
+Quanto maior a demora, menor o pagamento, e quanto maior a distância, maior o dinheiro recebido. 
+A carga e descarga é realizada em estações dedicadas, que devem estar próximas dos pontos de interesse. 
+É possível juntar estações de veículos diferentes para serem tratados como uma única estação, compartilhando recursos que podem ser transportados por cada um dos veículos que a utilizam.
 
-Além disso, há diversos meios de transporte, cada um com suas características. Trens, por exemplo, são caros, precisam de um vagão dedicado à locomoção e vagões separados para carga, e circulam apenas em ferrovias, mas são rápidos e têm uma quantidade ajustável de carga que pode ser transportada, de acordo com o número de vagões dedicados a cada tipo de produto. Caminhões e ônibus, por outro lado, são baratos e capazes de carregar produtos sem mais auxílio, mas são lentos e tem pouca capacidade. Há também aviões e navios que podem ser utilizados. Existem diversos modelos diferentes para cada uma dessas categorias. A seleção de veículos muda conforme o tempo do jogo progride, com novos modelos tornando-se disponíveis e os antiquados não podendo mais ser adquiridos.
+Além disso, há diversos meios de transporte, cada um com suas características. 
+Trens, por exemplo, são caros, precisam de um vagão dedicado à locomoção e vagões separados para carga, e circulam apenas em ferrovias, mas são rápidos e têm uma quantidade ajustável de carga que pode ser transportada, de acordo com o número de vagões dedicados a cada tipo de produto. 
+Caminhões e ônibus, por outro lado, são baratos e capazes de carregar produtos sem mais auxílio, mas são lentos e tem pouca capacidade. 
+Há também aviões e navios que podem ser utilizados. 
+Existem diversos modelos diferentes para cada uma dessas categorias. A seleção de veículos muda conforme o tempo do jogo progride, com novos modelos tornando-se disponíveis e os antiquados não podendo mais ser adquiridos.
 
-O OpenTTD tem suporte a execução como servidor dedicado, sem interface gráfica. Nesse modo, a interação com ele se dá através de um console, que aceita comandos pré-determinados, como iniciar uma IA ou reiniciar o jogo, e escreve na saída padrão e na saída de erro os acontecimentos do jogo. 
+O OpenTTD tem suporte a execução como servidor dedicado, sem interface gráfica. 
+Nesse modo, a interação com ele se dá através de um console, que aceita comandos pré-determinados, como iniciar uma IA ou reiniciar o jogo, e escreve na saída padrão e na saída de erro os acontecimentos do jogo. 
 
 \section{Inteligências Artificiais}
-O OpenTTD tem suporte a inteligências artificiais, cujo comportamento é definido por um conjunto de scripts Squirrel, que é descrita pelos seus desenvolvedores como uma linguagem de \textit{scripting} de alto nível, imperativa e orientada a objetos, projetada para ser leve e se adequar aos requerimentos de banda, memória e processamento de aplicações como jogos\footnote{\url{www.squirrel-lang.org}}. Sua sintaxe é bastante similar à de C++. O OpenTTD tem seu próprio interpretador Squirrel, que executa um certo número de instruções de cada IA antes de interrompê-la por um breve período de tempo. Estes scripts são responsáveis por todas as ações que a IA pode tomar, como quais pontos de produção e consumo atender com seus veículos, como construir um caminho que atenda a este transporte, e quais veículos utilizar para isso.
+O OpenTTD tem suporte a inteligências artificiais, cujo comportamento é definido por um conjunto de scripts Squirrel, que é descrita pelos seus desenvolvedores como uma linguagem de \textit{scripting} de alto nível, imperativa e orientada a objetos, projetada para ser leve e se adequar aos requerimentos de banda, memória e processamento de aplicações como jogos\footnote{\url{www.squirrel-lang.org}}. Sua sintaxe é bastante similar à de C++. O OpenTTD tem seu próprio interpretador Squirrel, que executa um certo número de instruções de cada IA antes de interrompê-la por um breve período de tempo. Esses scripts são responsáveis por todas as ações que a IA pode tomar, como quais pontos de produção e consumo atender com seus veículos, como construir um caminho que atenda a este transporte, e quais veículos utilizar para isso.
+
+Cada conjunto de scripts fica dentro de uma pasta, que fica em um diretório pertencente ao de configurações do OpenTTD. Esse diretório de IAs também pode incluir bibliotecas para o uso de outras IAs. 
+Cada IA deve ter ao menos um script de informações de identificação da IA e um script principal que deve conter um loop infinito com o funcionamento da mesma. 
+Cada IA pode ter também qualquer número de scripts auxiliares, que devem ficar na mesma pasta e serem chamados a partir do script principal.
+Essas IAs podem ser instanciadas durante o jogo, e cada uma que seja iniciada passa a assumir o controle de uma companhia, cujo comportamento é definido pelos seus scripts.
 
 
-
-Explicar como as IAs ficam na pasta do OpenTTD
-
-Explicar como é o funcionamento básico de uma IA genérica
-
-Explicar como podemos interagir com uma IA
+%Explicar como as IAs ficam na pasta do OpenTTD
+%
+%Explicar como é o funcionamento básico de uma IA genérica
+%
+%Explicar como podemos interagir com uma IA
 
 \chapter{Implementação}
 \section{Objetivos}
