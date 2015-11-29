@@ -73,7 +73,6 @@ Finalmente, o jogo que foi escolhido para este estudo de viabilidade foi o OpenT
 %-explicar os nosso objetivos em aplicar o OpenTuner sobre ele
 %-explicar como exatamente integramos os dois
 
-%Miojo notes: OpenTTD se chama OpenTTD, simplesmente. Não é abreviação de Open Transport Tycoon Deluxe, embora seja </pedantic>
 O OpenTTD \footnote{\url{www.openttd.org}}  é um clone de código aberto do clássico jogo Transport Tycoon Deluxe. Neste jogo, o jogador assume o papel de um administrador de uma empresa de transportes, e pode gerenciar e construir diversas redes de transporte, desde alugar e operar linhas de ônibus, até construir ferrovias e aeroportos. O objetivo do jogo é livre, sendo normalmente considerado apenas como criar uma linha de transporte eficiente, ou maximizar os lucros que sua empresa gera. Por este fato, e pela simplicidade de lidar com o jogo, esse foi escolhido para ser tratado neste trabalho.
  
 \begin{figure}[h]
@@ -119,17 +118,6 @@ O AIBuilder funciona substituindo linhas com palavras-chave pré-determinadas em 
 
 O TTDHandler realiza a interface com o OpenTTD. Ele envia comandos para o servidor via pipe para o stdin do servidor e lê a saída retornada. O TTDHandler é responsável por iniciar IAs, parar IAs, ler respostas, e reiniciar o servidor quando necessário. Após iniciar as IAs, ele espera uma saída em formato específico vinda do jogo, formato este definido pelo padrão do OpenTTD e por uma convenção adotada para o ajuste fino realizado aqui. Ao detectar esta saída, que contém o resultado obtido e a identificação da IA, o TTDHandler concatena este resultado em um vetor, e devolve esse vetor quando todas as IAs terminarem.
 
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=0.7\linewidth]{Diagrama1}
-%\caption[Estrutura do \textit{tuner} implementado]{}
-%\caption{}
-%\label{fig:Diagrama1}
-%\end{figure}
-%\chapter{Experimentos}
-
-%BEGIN RASCUNHO
-
 \begin{figure}
 \centering
 \includegraphics[width=0.7\linewidth]{Diagrama1}
@@ -137,8 +125,6 @@ O TTDHandler realiza a interface com o OpenTTD. Ele envia comandos para o servid
 \label{fig:Diagrama1}
 \end{figure}
 
-
-%END RASCUNHO
 %-coisas que aconteceram
 
 %-Estrutura do programa
@@ -148,24 +134,6 @@ O TTDHandler realiza a interface com o OpenTTD. Ele envia comandos para o servid
 %  máquina virtual cedida pelo Gnann, carinhosamente chamada derrota
 %  ra, o servidor web do uspgamedev
 %  não zillertal porque faltava uma biblioteca que somehow só fazia falta de vez em quando e que eu esqueci de pedir pra instalarem
-
-%Insofar, experimentos apenas com valor da companhia.
-%Also, não guardamos as configurações. Deveríamos corrigir isso.
-
-%Embora neste exemplo tenhamos apenas um capítulo,  entre a introdução
-%e a conclusão de uma monografia podemos ter uma sequência de capítulos
-%descrevendo o trabalho e os resultados. Estes podem descrever
-%fundamentos, trabalhos relacionados, método/modelo/algoritmo proposto,
-%experimentos realizados, resultados obtidos.
-%
-%Cada capítulo pode ser organizado em seções, que por sua vez pode
-%conter subseções. 
-
-%Um exemplo de figura está na figura~\ref{fig:graph}.
-%\begin{figure}[htb]
-%\includegraphics[width=5cm]{figuras/graph}
-%\caption{\label{fig:graph}Exemplo de uma figura.}
-%\end{figure}
 
 \section{Experimentos e Resultados}
 
