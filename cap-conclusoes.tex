@@ -4,13 +4,14 @@
 \chapter{Conclusões}
 \label{cap:conclusoes}
 
+Com este trabalho, foi explorada a viabilidade de aplicações do arcabouço OpenTuner em jogos digitais. Por extensão, é considerado também um estudo de aplicação do conceito de \textit{autotuning} em geral a jogos. Para isso, foram consideradas diversas abordagens possíveis de aplicações em jogos, até que fosse encontrada a que foi explorada de fato. Encontrar um aspecto de um jogo já existente que pudesse ser otimizado com \textit{autotuning} foi um desafio à parte.
+
+Parte do propósito do estudo de viabilidade era encontrar esta combinação de um jogo e um aspecto a ser otimizado. A pesquisa de possíveis combinações levou à muitas ideias interessantes, dentre as quais foi escolhida a otimização de um aspecto das IAs do jogo OpenTTD. Assim que o jogo foi fixado, os esforços para integração mostraram que, em caso de se obter uma interface entre o jogo e o OpenTuner, pode-se otimizar um aspecto do jogo com sucesso.
+
 Apesar de todos os empecilhos, foi observado que o OpenTuner conseguiu melhorar os resultados observados modificando apenas o vetor de custos do algoritmo de Pathfinding usado pela IA. Mesmo esta sendo uma parte relativamente pequena de uma IA bastante complexa, e sem saber o funcionamento interno do jogo ou da IA, pode-se ver a diferença nos resultados obtidos. No momento, esses resultados podem ser questionáveis, devido à forma como o OpenTTD lida com as IAs, já que as medições podem ter tido uma variância considerável de tempo do jogo entre as medições.
 
-Com isso em mente, talvez seja possível obter resultados melhores se o jogo for desenvolvido com foco em automatização desde as etapas iniciais, e estruturando o \textit{tuner} de modo a aproveitar melhor as características do OpenTuner.
+Com isso em mente, talvez seja possível obter resultados melhores se o jogo for desenvolvido com foco em automatização desde as etapas iniciais, e estruturando o \textit{autotuner} de modo a aproveitar melhor as características do OpenTuner. A construção de um jogo tendo em mente seu uso com um \textit{autotuner} desde as fases de concepção pode ser um esforço altamente interessante, pois não só os mecanismos internos e algoritmos do código do jogo podem ser otimizados via \textit{autotuning}, como também aspectos de \textit{gameplay} propriamente dito podem ser alterados e estudados utilizando um \textit{autotuner}.
 %Aliás, se a gente for pra Rec, eu já tenho algo em mente, mas que não vai dar tempo de fazer no momento.
-
-
-
 
 %Provavelmente funciona yaaaaaaay mas provavelmente rende mais se o jogo for projetado assim desde o começo yaaaaaaaaay
 
@@ -53,9 +54,11 @@ Ainda no quesito de se escolher o jogo e o que seria otimizado, passamos também 
 Por fim, outro desafio foi a parte do trabalho que envolveu pesquisa teórica. Sendo uma área de pesquisa tão nova e inexplorada, não existem muitos outros artigos ou fontes no assunto. Na verdade, não conseguimos encontrar outro trabalho que relacione \textit{autotuning} usado em jogos digitais da maneira que fizemos. Entre os trabalhos relacionados que foram encontrados, tivemos alguma dificuldade inicial em compreendê-los completamente, pois é um assunto razoavelmente complexo.
 
 \subsection{Disciplinas Relacionadas}
-Uhhh as de computação genéricas?\\
-IA\\
-Concorrente?\\
+Princípios de Desenvolvimento de Algoritmos, como a matéria que introduziu pensamento lógico e me ensinou a pensar em algoritmos.\\
+Laboratórios de Programação 1 e 2, como as matérias que cobriram diversos aspectos utilizados na confecção deste trabalho, como git, LaTeX, programação orientada a objetos, e programação de jogos digitais.\\
+Leitura Dramática, por me ensinar os fundamentos de falar em público, sempre necessário para realizar uma boa apresentação.
+Programação Concorrente, por me desafiar a aprender a pensar em paradigmas de concorrência e programas mais complexos; o que ajudou com a compreensão de como os sistemas utilizados aqui funcionam.\\
+
 
 \chapter{Trabalhos Futuros}
 
