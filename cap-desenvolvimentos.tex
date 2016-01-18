@@ -77,9 +77,7 @@ Finalmente, o jogo que foi escolhido para este estudo de viabilidade foi o OpenT
 %-explicar os nosso objetivos em aplicar o OpenTuner sobre ele
 %-explicar como exatamente integramos os dois
 
-O OpenTTD \footnote{\url{www.openttd.org}}  é um clone de código aberto do clássico jogo Transport Tycoon Deluxe. Neste jogo, o jogador assume o papel de um administrador de uma empresa de transportes, e pode gerenciar e construir diversas redes de transporte, desde operar linhas de ônibus, até construir ferrovias e aeroportos. 
-%Explicar melhor o objetivo do jogo
-O objetivo do jogo é livre, sendo normalmente considerado apenas como criar uma linha de transporte eficiente, ou maximizar os lucros que sua empresa gera. Por este fato, e pela simplicidade de lidar com o jogo, esse foi escolhido para ser tratado neste trabalho.
+O OpenTTD \footnote{\url{www.openttd.org}}  é um clone de código aberto do clássico jogo Transport Tycoon Deluxe. Neste jogo, o jogador assume o papel de um administrador de uma empresa de transportes, e pode gerenciar e construir diversas redes de transporte, desde operar linhas de ônibus, até construir ferrovias e aeroportos. O jogo não possui objetivo específico ditado para o jogador, deixando ao mesmo a liberdade de escolher qual será. Pode-se querer construir uma grande linha de trem, preparar pontos de ônibus, ou apenas jogar o jogo com o desejo de ver a empresa virtual crescer. Pela liberdade de objetivo e pela simplicidade de lidar com o jogo, ele foi escolhido para ser tratado neste trabalho.
  
 \begin{figure}[h]
 	\centering
@@ -163,8 +161,7 @@ Apesar de todos os experimentos terem sido muito mais curtos do que inicialmente
 
 Uma observação à parte sobre os testes realizados: em determinado momento durante os testes no servidor Rá, foi tentada uma conexão externa com as instâncias de teste do jogo. O próprio sistema do jogo recusou a conexão, por assumir que o cliente estava rodando em uma velocidade lenta demais para a conexão. Isto aconteceu devido à compilação para alta velocidade feita para o OpenTTD.
 
-%comentar a diferença e relação entre os gráficos
-A seguir, estão os gráficos criados com os resultados obtidos nos experimentos. Pode-se verificar, no geral, que o OpenTuner consegue obter resultados melhores conforme mais iterações passam. Na figura \ref{fig:value-50yrs}, podemos ver que as iterações iniciais mantiveram-se em uma média, mas valores melhores foram encontrados em iterações mais elevadas, como era de se esperar. Este teste ainda continha uma certa variância estocástica por interação do gerador de mapas com os testes; a semente do gerador não havia ainda sido fixada, o que causou as alterações radicais de valor observadas.
+A seguir, estão os gráficos criados com os resultados obtidos nos experimentos. Neste conjunto de gráficos, o gráfico à esquerda mostra os valores observados nas medições, e os gráficos à direita mostram apenas o máximo valor encontrado, para facilidade de observação da melhora dos resultados. Pode-se verificar, no geral, que o OpenTuner consegue obter resultados melhores conforme mais iterações passam. Na figura \ref{fig:value-50yrs}, podemos ver que as iterações iniciais mantiveram-se em uma média, mas valores melhores foram encontrados em iterações mais elevadas, como era de se esperar. Este teste ainda continha uma certa variância estocástica por interação do gerador de mapas com os testes; a semente do gerador não havia ainda sido fixada, o que causou as alterações radicais de valor observadas.
 \begin{figure}[h!]\centering
 	\begin{subfigure}{0.4\textwidth}\includegraphics[width=1\linewidth]{value-50yrs}
 	\end{subfigure}
