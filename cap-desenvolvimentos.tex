@@ -27,10 +27,11 @@ Para tratar destes desafios então, foi desenvolvido um \textit{framework} de \te
 \section{O OpenTuner}
 %-explicar o que é, e o que esperamos dele
 %-dar exemplos mais detalhados
-%THIS v
-%-incluir aqui nosso exemplo das árvores de habilidades
-%THIS ^
+
 OpenTuner é um arcabouço para a implementação de sistemas de otimização e ajuste fino de programas. Utilizando um conjunto de técnicas empíricas de busca, o OpenTuner gera e testa combinações de parâmetros de configuração para um determinado programa, que podem representar por exemplo, escolhas algorítmicas.
+
+%TODO 
+%inserir aqui uma explicação sucinta do exemplo do artigo do OpenTuner sobre as flags de compilação do gcc
 
 OpenTuner introduziu o conceito de utilizar conjuntos de técnicas de busca para \textit{autotuning} de programas, o que permite que um número de técnicas diferentes trabalhem em conjunto para encontrar uma solução ótima. Estes conjuntos incluem técnicas refinadas de busca, preparadas para navegar espaços complexos, e utilizar representações mais sofisticadas de dados; isto permite que problemas de complexidade maior sejam resolvidos, de uma maneira que pode ser adaptada por diversos projetos. O OpenTuner é capaz de encontrar resultados em espaços de busca muito grandes, passando de $10^{3600}$ possibilidades, como relatado no artigo (\cite{ansel2014opentuner}).
 
@@ -61,7 +62,8 @@ Foi considerada a ideia de usar um \textit{bot}, um personagem controlado por IA
 Próximo na lista de ideias estava a otimização da distribuição de pontos para um personagem de RPG (Role-Playing Game, ou jogo de interpretação de papeis). Para cada personagem em um jogo de RPG, existe um conjunto de atributos, com pontos que podem ser distribuídos entre eles; para cada atributo, uma determinada quantidade de pontos afeta de forma diferente os resultados finais que um personagem pode ter no decorrer do jogo (um maior valor de Força, por exemplo, acarreta em ataques mais poderosos). Computacionalmente é uma questão muito mais simples, pois com este exemplo consegue-se derivar diretamente os valores a serem otimizados. Exemplos destes valores são: a quantidade de pontos de vida que um personagem possui ou quantos pontos de dano o mesmo causa com um ataque.
 
 A escolha de qual jogo se usaria de base torna-se então o problema. Deve-se considerar a complexidade do jogo em si, dado que isto influencia diretamente a maneira de se modelar a distribuição de pontos no OpenTuner. Foi iniciada a implementação de um \textit{autotuner} simples com uma árvore de habilidades genérica como exemplo, para verificação de como o programa se comportaria, e se ele daria os resultados ótimos dentro de um bom tempo de execução.
-%Explicar o que é uma árvore de habilidades genérica
+
+Uma árvore de habilidades em um jogo de RPG, como mencionado no parágrafo anterior, é um dos aspectos do jogo a ser decidido pelo jogador, de forma a se customizar seu personagem. A árvore contém nós que representam diferentes habilidades que influenciam a performance do tal personagem dentro do jogo, modificando que coisas este pode fazer, ou quão bem estas coisas serão feitas (ataques mais fortes, como o exemplo mais básico disso). É possível derivar-se então que o desejado seria encontrar uma maneira ótima de se preencher esta árvore, pois escolher alocar seus limitados pontos em uma maneira implica em focar alguns aspectos da árvore, e sacrificar outros. Esta prática é conhecida entre jogadores pelo termo \textit{minmaxing}.
 
 Ideias de jogos a serem modelados foram: Torchlight 2\footnote{\url{http://www.torchlight2game.com/}, visitado em 29/11/15}, Path of Exile\footnote{\url{https://www.pathofexile.com/}, visitado em 29/11/15}, The Elder Scrolls V: Skyrim\footnote{\url{http://www.elderscrolls.com/skyrim/}, visitado em 29/11/15}, jogos do tipo Rogue-like\footnote{\url{https://pt.wikipedia.org/wiki/Roguelike}, visitado em 29/11/15}, League of Legends\footnote{\url{http://br.leagueoflegends.com/}, visitado em 29/11/15}, DOTA 2\footnote{\url{http://br.dota2.com/}, visitado em 29/11/15}, e até algum possível sistema de RPG de mesa. Alguns destes foram descartados imediatamente por motivos como dificuldade de modelagem da árvore ou aleatoriedade demasiada envolvida no processo de testes.
 
