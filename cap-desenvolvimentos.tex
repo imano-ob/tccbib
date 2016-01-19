@@ -30,9 +30,6 @@ Para tratar destes desafios então, foi desenvolvido um \textit{framework} de \te
 
 OpenTuner é um arcabouço para a implementação de sistemas de otimização e ajuste fino de programas. Utilizando um conjunto de técnicas empíricas de busca, o OpenTuner gera e testa combinações de parâmetros de configuração para um determinado programa, que podem representar por exemplo, escolhas algorítmicas.
 
-%TODO 
-%inserir aqui uma explicação sucinta do exemplo do artigo do OpenTuner sobre as flags de compilação do gcc
-
 OpenTuner introduziu o conceito de utilizar conjuntos de técnicas de busca para \textit{autotuning} de programas, o que permite que um número de técnicas diferentes trabalhem em conjunto para encontrar uma solução ótima. Estes conjuntos incluem técnicas refinadas de busca, preparadas para navegar espaços complexos, e utilizar representações mais sofisticadas de dados; isto permite que problemas de complexidade maior sejam resolvidos, de uma maneira que pode ser adaptada por diversos projetos. O OpenTuner é capaz de encontrar resultados em espaços de busca muito grandes, passando de $10^{3600}$ possibilidades, como relatado no artigo (\cite{ansel2014opentuner}).
 
 O OpenTuner trata o problema de \textit{autotuning} como um problema de busca. O espaço de busca é composto de configurações, que são atribuições concretas de um conjunto de parâmetros. Parâmetros podem assumir diversas formas, como números simples, ou conjuntos complexos de dados. Um resultado é gerado executando-se o conjunto de configurações em uma forma específica ao seu domínio, e pode ser medido em performance, corretude da resposta ou outras métricas. Técnicas de busca são responsáveis por alterar as configurações utilizando manipuladores definidos pelo usuário. A figura \ref{fig:OpenTuner} ilustra a organização do funcionamento do OpenTuner.
@@ -46,6 +43,10 @@ O OpenTuner trata o problema de \textit{autotuning} como um problema de busca. O
 Fonte: \cite{ansel2014opentuner}\\
 
 O sistema de conjuntos de busca do OpenTuner funciona agregando diversas técnicas de busca em uma metatécnica, que delega a busca a uma delas. Dessa forma, é possível montar uma hierarquia de técnicas e metatécnicas que permita a melhor solução para cada problema. O mecanismo de busca base do OpenTuner age em cima apenas de uma técnica, geralmente uma metatécnica. A metatécnica central do OpenTuner é a \textit{multi-armed bandit with sliding window, area under the curve credit assignment (AUC Bandit)}, baseada numa solução ótima para o problema de múltiplos caça-níqueis \cite{fialho2010analyzing}. Esse problema consiste em encontrar um equilíbrio entre, dadas múltiplas máquinas caça-níquel, explorar quais são os que oferecem melhores recompensas e utilizar com mais frequência os que possuem resultados melhores. Para este trabalho, foram utilizados os métodos de busca padrão do OpenTuner.
+
+%TODO 
+%inserir aqui uma explicação sucinta do exemplo do artigo do OpenTuner sobre as flags de compilação do gcc
+Um exemplo de aplicação do OpenTuner, mostrado no artigo \cite{ansel2014opentuner} é o de escolha de \textit{flags} de compilação na execução do gcc, o compilador padrão de C. Eram dados diferentes programas a serem otimizados, e o OpenTuner determinava o conjunto de \textit{flags} que produziria um binário executável com o melhor tempo de execução. O artigo mostra os resultados, e com o OpenTuner foi conseguido um \textit{speedup} de até 2.8 vezes sobre a \textit{flag} de otimização básica -O3 do gcc.
 
 Decidimos por estudar aplicações do OpenTuner no mundo real, em específico para jogos digitais. A ideia básica é que podemos usar o OpenTuner para otimizar um conjunto de parâmetros dentro do jogo, para ajudar o jogador a ter um planejamento, ou como uma metaferramenta de auxílio. Exemplos são a otimização de: parâmetros de inteligências artificiais para obter comportamentos desejáveis; parâmetros de geradores de mapas para obter ambientes variados com características comuns desejáveis; e a distribuição de pontos em personagens de um RPG (Role-Playing Game).
 
