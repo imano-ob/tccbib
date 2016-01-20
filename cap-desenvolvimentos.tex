@@ -129,7 +129,7 @@ Essas IAs podem ser instanciadas durante o jogo, e cada uma que seja iniciada pa
 \chapter{Implementação}
 \section{Objetivos}
 
-Para avaliar a aplicabilidade de técnicas de ajuste fino em jogos, neste trabalho foi feito um \textit{tuner} para o vetor de custos de \textit{Pathfinding} para construção de trilhos da IA, por ser um conjunto de valores mais simples de se trabalhar. Serão observados fatores como facilidade de implementação, funcionamento adequado e resultados obtidos. Para este trabalho, foram utilizados os métodos de busca padrão do OpenTuner.
+Para avaliar a aplicabilidade de técnicas de ajuste fino em jogos, neste trabalho foi feito um \textit{tuner} para o vetor de custos de \textit{Pathfinding} para construção de trilhos da IA, além do custo máximo admitido pelo algoritmo, por ser um conjunto de valores mais simples de se trabalhar. Cada posição desse vetor representa um custo associado a um tipo de trilho construído sob diferentes condições, como curvas, pontes, subidas ou descidas, sendo que o caminho escolhido será o de menor custo que seja capaz de conectar a origem ao destino. Note que esse custo não é diretamente relacionado à quantia de dinheiro gasta pela IA no jogo para construir o caminho. Serão observados fatores como facilidade de implementação, funcionamento adequado e resultados obtidos. A função a ser otimizada é diferente em cada um dos testes, sempre tentando maximizar algum valor ou recurso em determinados períodos de tempo de jogo. Esses testes serão detalhados mais à frente. Para este trabalho, foram utilizados os métodos de busca padrão do OpenTuner. 
 %Explicar (por alto) o vetor de custos do pathfinder, e o que é otimizado nele
 
 \section{Integração}
